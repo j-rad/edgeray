@@ -1,0 +1,1359 @@
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /home/jrad/RustroverProjects/edgeray-workspace/rustray/Cargo.toml
+workspace: /home/jrad/RustroverProjects/edgeray-workspace/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /home/jrad/RustroverProjects/edgeray-workspace/rr-ui/Cargo.toml
+workspace: /home/jrad/RustroverProjects/edgeray-workspace/Cargo.toml
+warning: unused import: `std::fs::File`
+  --> rr-ui/src/ui/components/inbound_modal.rs:12:5
+   |
+12 | use std::fs::File;
+   |     ^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused imports: `BufRead`, `BufReader`, `SeekFrom`, and `Seek`
+  --> rr-ui/src/ui/components/inbound_modal.rs:13:15
+   |
+13 | use std::io::{BufRead, BufReader, Read, Seek, SeekFrom};
+   |               ^^^^^^^  ^^^^^^^^^        ^^^^  ^^^^^^^^
+
+warning: unused import: `crate::ui::components::forms::TextInput`
+ --> rr-ui/src/ui/components/log_viewer.rs:5:5
+  |
+5 | use crate::ui::components::forms::TextInput;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::collections::VecDeque`
+ --> rr-ui/src/ui/components/log_viewer.rs:7:5
+  |
+7 | use std::collections::VecDeque;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+ --> rr-ui/src/ui/components/plugin_slot.rs:8:5
+  |
+8 | use std::collections::HashMap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::domain::plugin_api::PluginRegistryEntry`
+   --> rr-ui/src/ui/components/plugin_slot.rs:105:9
+    |
+105 |     use crate::domain::plugin_api::PluginRegistryEntry;
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `ChoiceBoxOption`
+ --> rr-ui/src/ui/components/qr_code_modal.rs:5:36
+  |
+5 | use crate::ui::components::forms::{ChoiceBoxOption, TextArea};
+  |                                    ^^^^^^^^^^^^^^^
+
+warning: unused import: `TextInput`
+ --> rr-ui/src/ui/components/subscription_generator.rs:5:46
+  |
+5 | use crate::ui::components::forms::{TextArea, TextInput};
+  |                                              ^^^^^^^^^
+
+warning: unused import: `std::time::Duration`
+ --> rr-ui/src/ui/pages/connections.rs:7:5
+  |
+7 | use std::time::Duration;
+  |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `ActiveConnection`, `MeshNodeStatus`, and `NodeHealth`
+ --> rr-ui/src/ui/pages/dashboard.rs:6:5
+  |
+6 |     ActiveConnection, DashboardStats, DiscoveryState, MeshNodeStatus, NodeHealth,
+  |     ^^^^^^^^^^^^^^^^                                  ^^^^^^^^^^^^^^  ^^^^^^^^^^
+
+warning: unused import: `crate::ui::components::card::Card`
+ --> rr-ui/src/ui/pages/dashboard.rs:8:5
+  |
+8 | use crate::ui::components::card::Card;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::time::Duration`
+  --> rr-ui/src/ui/pages/dashboard.rs:15:5
+   |
+15 | use std::time::Duration;
+   |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::ui::server_fns::ServerFnError`
+ --> rr-ui/src/ui/pages/inbounds.rs:7:5
+  |
+7 | use crate::ui::server_fns::ServerFnError;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `ClientOperation` and `manage_client`
+ --> rr-ui/src/ui/pages/inbounds.rs:9:29
+  |
+9 | use crate::ui::server_fns::{ClientOperation, list_inbounds, manage_client};
+  |                             ^^^^^^^^^^^^^^^                 ^^^^^^^^^^^^^
+
+warning: unused import: `MeshNodeRole`
+ --> rr-ui/src/ui/pages/mesh.rs:4:31
+  |
+4 | use crate::models::{MeshNode, MeshNodeRole, MeshNodeStatus};
+  |                               ^^^^^^^^^^^^
+
+warning: unused import: `crate::db::DbClient`
+  --> rr-ui/src/ui/server_fns.rs:19:5
+   |
+19 | use crate::db::DbClient;
+   |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Nonce`
+  --> rr-ui/src/api/signaling.rs:48:23
+   |
+48 |     ChaCha20Poly1305, Nonce
+   |                       ^^^^^
+
+warning: unused import: `TcpStream`
+ --> rr-ui/src/services/active_probing.rs:9:29
+  |
+9 | use tokio::net::{TcpSocket, TcpStream, UdpSocket};
+  |                             ^^^^^^^^^
+
+warning: unused import: `ProbeProtocol`
+  --> rr-ui/src/services/auto_failover.rs:24:70
+   |
+24 | use crate::services::active_probing::{ActiveProber, NodeHealthStats, ProbeProtocol, ProbeResult};
+   |                                                                      ^^^^^^^^^^^^^
+
+warning: unused import: `info`
+ --> rr-ui/src/services/log_watcher.rs:1:18
+  |
+1 | use log::{error, info, warn};
+  |                  ^^^^
+
+warning: unused import: `HashSet`
+ --> rr-ui/src/services/log_watcher.rs:3:33
+  |
+3 | use std::collections::{HashMap, HashSet};
+  |                                 ^^^^^^^
+
+warning: unused imports: `AtomicBool` and `Ordering`
+ --> rr-ui/src/services/log_watcher.rs:7:25
+  |
+7 | use std::sync::atomic::{AtomicBool, Ordering};
+  |                         ^^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: `NodeCapacity`
+ --> rr-ui/src/services/mesh_orchestrator.rs:6:55
+  |
+6 | use crate::domain::models::{MeshNode, MeshNodeStatus, NodeCapacity, NodeHealth};
+  |                                                       ^^^^^^^^^^^^
+
+warning: unused imports: `Deserialize` and `Serialize`
+ --> rr-ui/src/services/sidecar_manager.rs:7:13
+  |
+7 | use serde::{Deserialize, Serialize};
+  |             ^^^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: `UnixListener`
+  --> rr-ui/src/services/sidecar_manager.rs:12:18
+   |
+12 | use tokio::net::{UnixListener, UnixStream};
+   |                  ^^^^^^^^^^^^
+
+warning: unused import: `std::net::IpAddr`
+  --> rr-ui/src/adapters/nftables_manager.rs:12:5
+   |
+12 | use std::net::IpAddr;
+   |     ^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::os::unix::process::CommandExt`
+   --> rr-ui/src/adapters/rustray_core.rs:340:21
+    |
+340 |                 use std::os::unix::process::CommandExt;
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: use of deprecated struct `server_fn::error::NoCustomError`: Now server_fn can return any error type other than ServerFnError, so the WrappedServerError variant will be removed in 0.9.0
+   --> rr-ui/src/ui/server_fns.rs:436:47
+    |
+436 |             ServerFnError::<server_fn::error::NoCustomError>::ServerError(e.to_string())
+    |                                               ^^^^^^^^^^^^^
+    |
+    = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated struct `server_fn::error::NoCustomError`: Now server_fn can return any error type other than ServerFnError, so the WrappedServerError variant will be removed in 0.9.0
+   --> rr-ui/src/ui/server_fns.rs:442:51
+    |
+442 |                 ServerFnError::<server_fn::error::NoCustomError>::ServerError(e.to_string())
+    |                                                   ^^^^^^^^^^^^^
+
+warning: use of deprecated struct `server_fn::error::NoCustomError`: Now server_fn can return any error type other than ServerFnError, so the WrappedServerError variant will be removed in 0.9.0
+   --> rr-ui/src/ui/server_fns.rs:463:47
+    |
+463 |             ServerFnError::<server_fn::error::NoCustomError>::ServerError(e.to_string())
+    |                                               ^^^^^^^^^^^^^
+
+warning: use of deprecated struct `server_fn::error::NoCustomError`: Now server_fn can return any error type other than ServerFnError, so the WrappedServerError variant will be removed in 0.9.0
+   --> rr-ui/src/ui/server_fns.rs:466:47
+    |
+466 |             ServerFnError::<server_fn::error::NoCustomError>::ServerError(e.to_string())
+    |                                               ^^^^^^^^^^^^^
+
+warning: unused import: `Read`
+  --> rr-ui/src/ui/components/inbound_modal.rs:13:35
+   |
+13 | use std::io::{BufRead, BufReader, Read, Seek, SeekFrom};
+   |                                   ^^^^
+
+warning: unused import: `BufRead`
+ --> rr-ui/src/services/log_watcher.rs:5:15
+  |
+5 | use std::io::{BufRead, BufReader, Read, Seek, SeekFrom};
+  |               ^^^^^^^
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/add_client_modal.rs:19:9
+   |
+19 |     let mut email = use_signal(|| String::new());
+   |         ----^^^^^
+   |         |
+   |         help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/add_client_modal.rs:21:9
+   |
+21 |     let mut total_gb = use_signal(|| 0i64);
+   |         ----^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/add_client_modal.rs:22:9
+   |
+22 |     let mut expiry_time = use_signal(|| None::<i64>);
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: unused variable: `operation`
+  --> rr-ui/src/ui/components/bulk_operations_modal.rs:67:17
+   |
+67 |             let operation = get_operation();
+   |                 ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_operation`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `inbound`
+  --> rr-ui/src/ui/components/client_details_modal.rs:42:40
+   |
+42 |             if let (Some(client), Some(inbound)) = (&props.client, &props.inbound) {
+   |                                        ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_inbound`
+
+warning: unused variable: `angle`
+  --> rr-ui/src/ui/components/cpu_gauge.rs:15:9
+   |
+15 |     let angle = (percentage / 100.0) * 270.0 - 135.0;
+   |         ^^^^^ help: if this is intentional, prefix it with an underscore: `_angle`
+
+warning: unused variable: `evt`
+   --> rr-ui/src/ui/components/forms/date_picker.rs:148:41
+    |
+148 |                         onchange: move |evt: Event<FormData>| {
+    |                                         ^^^ help: if this is intentional, prefix it with an underscore: `_evt`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:36:9
+   |
+36 |     let mut remark = use_signal(|| String::new());
+   |         ----^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:37:9
+   |
+37 |     let mut protocol = use_signal(|| None::<String>);
+   |         ----^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:38:9
+   |
+38 |     let mut listen_ip = use_signal(|| String::from("0.0.0.0"));
+   |         ----^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:39:9
+   |
+39 |     let mut port = use_signal(|| 8443i64);
+   |         ----^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:49:9
+   |
+49 |     let mut client_uuid = use_signal(|| generate_uuid_v4());
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:50:9
+   |
+50 |     let mut client_password = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:52:9
+   |
+52 |     let mut reality_dest = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:53:9
+   |
+53 |     let mut reality_sni = use_signal(|| vec![String::from("example.com")]);
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:54:9
+   |
+54 |     let mut reality_short_ids = use_signal(|| vec![String::new()]);
+   |         ----^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:55:9
+   |
+55 |     let mut reality_private_key = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:56:9
+   |
+56 |     let mut reality_public_key = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:57:9
+   |
+57 |     let mut reality_pqc = use_signal(|| None::<String>);
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:58:9
+   |
+58 |     let mut stealth_handshake = use_signal(|| false);
+   |         ----^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:61:9
+   |
+61 |     let mut ws_path = use_signal(|| String::from("/"));
+   |         ----^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:62:9
+   |
+62 |     let mut ws_host = use_signal(|| String::new());
+   |         ----^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:65:9
+   |
+65 |     let mut up_speed_limit = use_signal(|| 0i64);
+   |         ----^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:66:9
+   |
+66 |     let mut down_speed_limit = use_signal(|| 0i64);
+   |         ----^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:69:9
+   |
+69 |     let mut grpc_service_name = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:70:9
+   |
+70 |     let mut grpc_multi_mode = use_signal(|| false);
+   |         ----^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:73:9
+   |
+73 |     let mut tcp_path = use_signal(|| String::new());
+   |         ----^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:74:9
+   |
+74 |     let mut tcp_host = use_signal(|| String::new());
+   |         ----^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:75:9
+   |
+75 |     let mut tcp_type = use_signal(|| None::<String>);
+   |         ----^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:78:9
+   |
+78 |     let mut flow_type = use_signal(|| None::<String>);
+   |         ----^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:79:9
+   |
+79 |     let mut ss_method = use_signal(|| None::<String>);
+   |         ----^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:82:9
+   |
+82 |     let mut flow_j_padding = use_signal(|| 0i64);
+   |         ----^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:83:9
+   |
+83 |     let mut flow_j_jitter = use_signal(|| 0i64);
+   |         ----^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:85:9
+   |
+85 |     let mut flow_j_port_count = use_signal(|| 64i64);
+   |         ----^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:86:9
+   |
+86 |     let mut flow_j_port_type = use_signal(|| Some("random_dynamic".to_string()));
+   |         ----^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:87:9
+   |
+87 |     let mut flow_j_congestion = use_signal(|| Some("bbr".to_string()));
+   |         ----^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:88:9
+   |
+88 |     let mut flow_j_rotation = use_signal(|| 60i64);
+   |         ----^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:89:9
+   |
+89 |     let mut flow_j_multiport_enabled = use_signal(|| true);
+   |         ----^^^^^^^^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:92:9
+   |
+92 |     let mut db_mimic_target = use_signal(|| Some("postgresql".to_string()));
+   |         ----^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:93:9
+   |
+93 |     let mut db_mimic_name = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:94:9
+   |
+94 |     let mut db_mimic_user = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:95:9
+   |
+95 |     let mut db_mimic_payload = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:98:9
+   |
+98 |     let mut slip_domain = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/inbound_modal.rs:99:9
+   |
+99 |     let mut slip_record = use_signal(|| Some("txt".to_string()));
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> rr-ui/src/ui/components/inbound_modal.rs:100:9
+    |
+100 |     let mut slip_frag = use_signal(|| 1280i64);
+    |         ----^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: unused variable: `flow_options`
+   --> rr-ui/src/ui/components/inbound_modal.rs:174:9
+    |
+174 |     let flow_options = vec![
+    |         ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_flow_options`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/log_viewer.rs:27:9
+   |
+27 |     let mut buffer_limit = use_signal(|| 10000usize);
+   |         ----^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: unused variable: `buffer_limit`
+  --> rr-ui/src/ui/components/log_viewer.rs:27:9
+   |
+27 |     let mut buffer_limit = use_signal(|| 10000usize);
+   |         ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_buffer_limit`
+
+warning: unused variable: `e`
+  --> rr-ui/src/ui/components/modal.rs:45:15
+   |
+45 |         move |e: MouseEvent| {
+   |               ^ help: if this is intentional, prefix it with an underscore: `_e`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/plugin_slot.rs:55:9
+   |
+55 |     let mut has_error = use_signal(|| false);
+   |         ----^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/subscription_generator.rs:11:9
+   |
+11 |     let mut nodes_input = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/theme_provider.rs:43:9
+   |
+43 |     let mut theme = use_signal(|| Theme::Dark);
+   |         ----^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/tun_dashboard.rs:15:9
+   |
+15 |     let mut is_loading = use_signal(|| true);
+   |         ----^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/tun_dashboard.rs:16:9
+   |
+16 |     let mut error_msg = use_signal(|| Option::<String>::None);
+   |         ----^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/components/tun_dashboard.rs:17:9
+   |
+17 |     let mut success_msg = use_signal(|| Option::<String>::None);
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/forms_demo.rs:12:9
+   |
+12 |     let mut text_value = use_signal(|| String::new());
+   |         ----^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/forms_demo.rs:13:9
+   |
+13 |     let mut number_value = use_signal(|| 0i64);
+   |         ----^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/forms_demo.rs:14:9
+   |
+14 |     let mut switch_value = use_signal(|| false);
+   |         ----^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/forms_demo.rs:15:9
+   |
+15 |     let mut textarea_value = use_signal(|| String::new());
+   |         ----^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/forms_demo.rs:16:9
+   |
+16 |     let mut multi_text_value = use_signal(|| vec![String::from("example.com")]);
+   |         ----^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/forms_demo.rs:17:9
+   |
+17 |     let mut date_value = use_signal(|| None::<i64>);
+   |         ----^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/forms_demo.rs:18:9
+   |
+18 |     let mut choice_value = use_signal(|| None::<String>);
+   |         ----^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/inbounds.rs:33:9
+   |
+33 |     let mut selected_client = use_signal(|| None::<(String, Client)>); // (inbound_id, client)
+   |         ----^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/inbounds.rs:34:9
+   |
+34 |     let mut selected_inbound_for_details = use_signal(|| None::<crate::models::Inbound<'static>>);
+   |         ----^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: unused variable: `inbounds_resource`
+  --> rr-ui/src/ui/pages/inbounds.rs:15:9
+   |
+15 |     let inbounds_resource = use_resource(move || async move {
+   |         ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_inbounds_resource`
+
+warning: unused variable: `selected_client`
+  --> rr-ui/src/ui/pages/inbounds.rs:33:9
+   |
+33 |     let mut selected_client = use_signal(|| None::<(String, Client)>); // (inbound_id, client)
+   |         ^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_selected_client`
+
+warning: unused variable: `selected_inbound_for_details`
+  --> rr-ui/src/ui/pages/inbounds.rs:34:9
+   |
+34 |     let mut selected_inbound_for_details = use_signal(|| None::<crate::models::Inbound<'static>>);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_selected_inbound_for_details`
+
+warning: unused variable: `handle_refresh`
+  --> rr-ui/src/ui/pages/mesh.rs:30:9
+   |
+30 |     let handle_refresh = move |_: Event<MouseData>| {
+   |         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_handle_refresh`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/migration.rs:10:9
+   |
+10 |     let mut is_analyzing = use_signal(|| false);
+   |         ----^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: unused variable: `is_analyzing`
+  --> rr-ui/src/ui/pages/migration.rs:10:9
+   |
+10 |     let mut is_analyzing = use_signal(|| false);
+   |         ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_is_analyzing`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/settings.rs:16:9
+   |
+16 |     let mut session_timeout = use_signal(|| 30i64);
+   |         ----^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/settings.rs:17:9
+   |
+17 |     let mut ssl_enabled = use_signal(|| false);
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/settings.rs:18:9
+   |
+18 |     let mut auto_backup = use_signal(|| true);
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/settings.rs:19:9
+   |
+19 |     let mut traffic_reset_day = use_signal(|| 1i64);
+   |         ----^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: unused variable: `session_timeout`
+  --> rr-ui/src/ui/pages/settings.rs:16:9
+   |
+16 |     let mut session_timeout = use_signal(|| 30i64);
+   |         ^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_session_timeout`
+
+warning: unused variable: `traffic_reset_day`
+  --> rr-ui/src/ui/pages/settings.rs:19:9
+   |
+19 |     let mut traffic_reset_day = use_signal(|| 1i64);
+   |         ^^^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_traffic_reset_day`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/cf_scanner.rs:13:9
+   |
+13 |     let mut concurrency = use_signal(|| 50i64);
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/cf_scanner.rs:14:9
+   |
+14 |     let mut timeout = use_signal(|| 1000i64);
+   |         ----^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> rr-ui/src/ui/pages/cf_scanner.rs:15:9
+   |
+15 |     let mut cidrs = use_signal(|| "104.16.0.0/12\n172.64.0.0/13".to_string());
+   |         ----^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: unused variable: `user_id`
+   --> rr-ui/src/services/delta_sync.rs:270:21
+    |
+270 |                     user_id,
+    |                     ^^^^^^^ help: try ignoring the field: `user_id: _`
+
+warning: unused variable: `flow`
+   --> rr-ui/src/services/subscription.rs:158:41
+    |
+158 | ...                   if let Some(flow) = &inbound
+    |                                   ^^^^ help: if this is intentional, prefix it with an underscore: `_flow`
+
+warning: variable does not need to be mutable
+   --> rr-ui/src/services/telemetry.rs:183:21
+    |
+183 |                 let mut client_opt = xray_client.lock().unwrap().clone();
+    |                     ----^^^^^^^^^^
+    |                     |
+    |                     help: remove this `mut`
+
+warning: unused variable: `user`
+   --> rr-ui/src/adapters/singbox_core.rs:222:34
+    |
+222 |     async fn add_user(&mut self, user: UserConfig) -> Result<(), CoreError> {
+    |                                  ^^^^ help: if this is intentional, prefix it with an underscore: `_user`
+
+warning: unused variable: `user_id`
+   --> rr-ui/src/adapters/singbox_core.rs:231:37
+    |
+231 |     async fn remove_user(&mut self, user_id: &str) -> Result<(), CoreError> {
+    |                                     ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_user_id`
+
+warning: unused variable: `user`
+   --> rr-ui/src/adapters/xray_core.rs:135:34
+    |
+135 |     async fn add_user(&mut self, user: UserConfig) -> Result<(), CoreError> {
+    |                                  ^^^^ help: if this is intentional, prefix it with an underscore: `_user`
+
+warning: unused variable: `user_id`
+   --> rr-ui/src/adapters/xray_core.rs:142:37
+    |
+142 |     async fn remove_user(&mut self, user_id: &str) -> Result<(), CoreError> {
+    |                                     ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_user_id`
+
+warning: unused variable: `orchestrator`
+   --> rr-ui/src/lib.rs:246:13
+    |
+246 |         let orchestrator = app_state.orchestrator.clone();
+    |             ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_orchestrator`
+
+warning: function `serialize_secret` is never used
+  --> rr-ui/src/domain/models.rs:51:4
+   |
+51 | fn serialize_secret<S>(secret: &SecretString, serializer: S) -> Result<S::Ok, S::Error>
+   |    ^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `serialize_secret_option` is never used
+  --> rr-ui/src/domain/models.rs:59:4
+   |
+59 | fn serialize_secret_option<S>(
+   |    ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: method `clear` is never used
+  --> rr-ui/src/jobs/traffic.rs:50:8
+   |
+33 | impl TrafficAccumulator {
+   | ----------------------- method in this implementation
+...
+50 |     fn clear(&mut self) {
+   |        ^^^^^
+
+warning: trait `ProberExt` is never used
+   --> rr-ui/src/services/auto_failover.rs:659:7
+    |
+659 | trait ProberExt {
+    |       ^^^^^^^^^
+
+warning: fields `user_id`, `expires_at`, and `last_check` are never read
+  --> rr-ui/src/services/live_quota.rs:46:5
+   |
+45 | struct UserQuotaState {
+   |        -------------- fields in this struct
+46 |     user_id: String,
+   |     ^^^^^^^
+...
+49 |     expires_at: i64,
+   |     ^^^^^^^^^^
+50 |     last_check: i64,
+   |     ^^^^^^^^^^
+   |
+   = note: `UserQuotaState` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `stripe_api_key` is never read
+   --> rr-ui/src/services/reseller_billing.rs:158:5
+    |
+156 | pub struct BillingManager {
+    |            -------------- field in this struct
+157 |     subscriptions: HashMap<String, ResellerSubscription>,
+158 |     stripe_api_key: String,
+    |     ^^^^^^^^^^^^^^
+
+warning: field `prediction_window_hours` is never read
+  --> rr-ui/src/services/route_optimizer.rs:82:5
+   |
+79 | pub struct RouteOptimizer {
+   |            -------------- field in this struct
+...
+82 |     prediction_window_hours: u64,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: fields `resource_limits` and `start_time` are never read
+  --> rr-ui/src/services/sidecar_manager.rs:38:5
+   |
+34 | struct PluginProcess {
+   |        ------------- fields in this struct
+...
+38 |     resource_limits: ResourceLimits,
+   |     ^^^^^^^^^^^^^^^
+39 |     start_time: std::time::Instant,
+   |     ^^^^^^^^^^
+   |
+   = note: `PluginProcess` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: field `message_id` is never read
+  --> rr-ui/src/services/tgbot.rs:34:9
+   |
+33 | struct Message {
+   |        ------- field in this struct
+34 |     pub message_id: u64,
+   |         ^^^^^^^^^^
+   |
+   = note: `Message` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: variants `StartupReceived`, `AuthChallengeSent`, `PasswordReceived`, `AuthOkSent`, and `ReadyForQuerySent` are never constructed
+  --> rr-ui/src/transport/db_mimic.rs:14:5
+   |
+12 | enum PgState {
+   |      ------- variants in this enum
+13 |     Initial,
+14 |     StartupReceived,
+   |     ^^^^^^^^^^^^^^^
+15 |     AuthChallengeSent,
+   |     ^^^^^^^^^^^^^^^^^
+16 |     PasswordReceived,
+   |     ^^^^^^^^^^^^^^^^
+17 |     AuthOkSent,
+   |     ^^^^^^^^^^
+18 |     ReadyForQuerySent,
+   |     ^^^^^^^^^^^^^^^^^
+   |
+   = note: `PgState` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `write_buf` is never read
+  --> rr-ui/src/transport/db_mimic.rs:27:5
+   |
+23 | pub struct DbMimicStream<S> {
+   |            ------------- field in this struct
+...
+27 |     write_buf: Vec<u8>,
+   |     ^^^^^^^^^
+
+warning: field `tun_interface` is never read
+  --> rr-ui/src/adapters/nftables_manager.rs:24:5
+   |
+22 | pub struct NftablesManager {
+   |            --------------- field in this struct
+23 |     /// TUN interface name
+24 |     tun_interface: String,
+   |     ^^^^^^^^^^^^^
+
+warning: field `apl` is never read
+   --> rr-ui/src/adapters/rustray_core.rs:107:5
+    |
+103 | pub struct RustRayCore {
+    |            ----------- field in this struct
+...
+107 |     apl: AtomicConfigWriter,
+    |     ^^^
+
+warning: field `api_address` is never read
+  --> rr-ui/src/adapters/singbox_core.rs:17:5
+   |
+13 | pub struct SingboxCore {
+   |            ----------- field in this struct
+...
+17 |     api_address: String,
+   |     ^^^^^^^^^^^
+
+warning: field `api_address` is never read
+  --> rr-ui/src/adapters/xray_core.rs:16:5
+   |
+12 | pub struct XrayCore {
+   |            -------- field in this struct
+...
+16 |     api_address: String,
+   |     ^^^^^^^^^^^
+
+warning: function `DnsManager` should have a snake case name
+   --> rr-ui/src/ui/app.rs:290:4
+    |
+290 | fn DnsManager() -> Element {
+    |    ^^^^^^^^^^ help: convert the identifier to snake case: `dns_manager`
+    |
+    = note: `#[warn(non_snake_case)]` (part of `#[warn(nonstandard_style)]`) on by default
+
+warning: comparison is useless due to type limits
+   --> rr-ui/src/cli/advanced.rs:404:20
+    |
+404 |     if port < 1 || port > 65535 {
+    |                    ^^^^^^^^^^^^
+    |
+    = note: `#[warn(unused_comparisons)]` on by default
+
+warning: calls to `std::mem::drop` with a reference instead of an owned value does nothing
+   --> rr-ui/src/services/sidecar_manager.rs:235:29
+    |
+235 | ...                   drop(process); // Release borrow
+    |                       ^^^^^-------^
+    |                            |
+    |                            argument has type `&mut PluginProcess`
+    |
+    = note: `#[warn(dropping_references)]` on by default
+help: use `let _ = ...` to ignore the expression or result
+    |
+235 -                             drop(process); // Release borrow
+235 +                             let _ = process; // Release borrow
+    |
+
+warning: `rr-ui` (lib) generated 138 warnings (run `cargo fix --lib -p rr-ui` to apply 114 suggestions)
+warning: unused import: `warn`
+ --> rr-ui/src/main.rs:9:24
+  |
+9 | use log::{error, info, warn};
+  |                        ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> rr-ui/src/main.rs:432:13
+    |
+432 | ...   let mut failover_engine = rr_ui::services::auto_failover::PredictiveFailoverEngine::new(failover_confi...
+    |           ----^^^^^^^^^^^^^^^
+    |           |
+    |           help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> rr-ui/src/main.rs:207:33
+    |
+207 | ...   let mut failover_engine = rr_ui::services::auto_failover::PredictiveFailoverEngine::new(failover_confi...
+    |           ----^^^^^^^^^^^^^^^
+    |           |
+    |           help: remove this `mut`
+
+warning: unused variable: `db_clone`
+   --> rr-ui/src/main.rs:344:9
+    |
+344 |     let db_clone = db_client.clone();
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_db_clone`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `settings`
+   --> rr-ui/src/main.rs:411:13
+    |
+411 |         let settings = <AllSetting as SettingOps>::get(&db_client)
+    |             ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_settings`
+
+warning: value assigned to `bin_path` is never read
+    --> rr-ui/src/main.rs:1015:13
+     |
+1015 |             bin_path = path;
+     |             ^^^^^^^^
+     |
+     = help: maybe it is overwritten before being read?
+     = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `update_all_geofiles` is never used
+   --> rr-ui/src/main.rs:998:10
+    |
+998 | async fn update_all_geofiles() -> Result<()> {
+    |          ^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `anyhow::Result`
+  --> rr-ui/src/bin/cli.rs:84:9
+   |
+84 |     use anyhow::Result;
+   |         ^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: value assigned to `bin_path` is never read
+   --> rr-ui/src/bin/cli.rs:816:13
+    |
+816 |             bin_path = path;
+    |             ^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `menu` is never used
+   --> rr-ui/src/bin/cli.rs:187:10
+    |
+187 | async fn menu() -> Result<()> {
+    |          ^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `update_all_geofiles` is never used
+   --> rr-ui/src/bin/cli.rs:799:10
+    |
+799 | async fn update_all_geofiles() -> Result<()> {
+    |          ^^^^^^^^^^^^^^^^^^^
+
+warning: `rr-ui` (bin "rr-ui") generated 7 warnings (run `cargo fix --bin "rr-ui" -p rr-ui` to apply 5 suggestions)
+warning: `rr-ui` (bin "rr-ui-cli") generated 4 warnings (run `cargo fix --bin "rr-ui-cli" -p rr-ui` to apply 1 suggestion)
+warning: unused import: `rust_embed::RustEmbed`
+  --> rr-ui/tests/integration_ui.rs:26:9
+   |
+26 |     use rust_embed::RustEmbed;
+   |         ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `crate::domain::models::MeshNodeRole`
+   --> rr-ui/src/services/mesh_orchestrator.rs:211:9
+    |
+211 |     use crate::domain::models::MeshNodeRole;
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `fp2`
+   --> rr-ui/src/services/tls_fingerprint.rs:264:13
+    |
+264 |         let fp2 = manager.current();
+    |             ^^^ help: if this is intentional, prefix it with an underscore: `_fp2`
+
+warning: `rr-ui` (bin "rr-ui" test) generated 7 warnings (7 duplicates)
+warning: `rr-ui` (test "integration_ui") generated 1 warning
+warning: `rr-ui` (bin "rr-ui-cli" test) generated 4 warnings (4 duplicates)
+warning: `rr-ui` (lib test) generated 138 warnings (136 duplicates) (run `cargo fix --lib -p rr-ui --tests` to apply 2 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.37s
+     Running unittests src/lib.rs (target/debug/deps/rr_ui-444bd3acfe5edb82)
+
+running 119 tests
+test adapters::nftables_manager::tests::test_manager_creation ... ok
+test adapters::nftables_manager::tests::test_builder ... ok
+test adapters::rustray_core::tests::test_all_protocols_supported ... ok
+test adapters::rustray_core::tests::test_build_vless_share_url ... ok
+test adapters::rustray_core::tests::test_build_vmess_share_url ... ok
+test adapters::rustray_core::tests::test_rustray_core_creation ... ok
+test adapters::singbox_core::tests::test_singbox_core_creation ... ok
+test adapters::rustray_core::tests::test_config_conversion_produces_valid_json ... ok
+test adapters::singbox_core::tests::test_supported_protocols ... ok
+test adapters::rustray_core::tests::test_validate_config_rejects_unknown_protocol ... ok
+test adapters::singbox_core::tests::test_validate_config ... ok
+test adapters::xray_core::tests::test_supported_protocols ... ok
+test adapters::xray_core::tests::test_xray_core_creation ... ok
+test api::signaling::tests::test_default_channels_includes_both ... ok
+test api::signaling::tests::test_dns_txt_payload_roundtrip ... ok
+test api::signaling::tests::test_validate_bearer_accepts_valid_token ... ok
+test api::signaling::tests::test_validate_bearer_rejects_missing ... ok
+test api::signaling::tests::test_encryption_roundtrip ... ok
+test api::signaling::tests::test_validate_bearer_rejects_wrong_token ... ok
+test domain::bulk_operations::tests::test_is_destructive ... ok
+test domain::bulk_operations::tests::test_operation_display_name ... ok
+test domain::bulk_operations::tests::test_progress_tracking ... ok
+test domain::graph_schema::tests::test_relationship_query ... ok
+test domain::graph_schema::tests::test_schema_not_empty ... ok
+test domain::models::tests::test_client_serialization_strict_types ... ok
+test adapters::atomic_config::tests::test_atomic_write ... ok
+test domain::models::tests::test_dokodemo_serialization ... ok
+test adapters::atomic_config::tests::test_transaction_log ... ok
+test domain::models::tests::test_inbound_protocol_enum_serialization ... ok
+test domain::models::tests::test_inbound_full_serialization ... ok
+test domain::models::tests::test_legacy_client_deserialization ... ok
+test domain::models::tests::test_pqc_matrix_variants ... ok
+test adapters::atomic_config::tests::test_json_validation ... ok
+test domain::models::tests::test_socks_serialization ... ok
+test domain::plugin_api::tests::test_plugin_hook_serialization ... ok
+test domain::plugin_api::tests::test_plugin_metadata_serialization ... ok
+test domain::proxy_core::tests::test_available_cores ... ok
+test domain::proxy_core::tests::test_core_error_display ... ok
+test domain::proxy_core::tests::test_protocol_display_name ... ok
+test jobs::traffic_reset::tests::test_reset_period_daily ... ok
+test jobs::traffic_reset::tests::test_reset_period_monthly ... ok
+test jobs::traffic_reset::tests::test_reset_period_weekly ... ok
+test services::active_probing::tests::test_health_score_degradation ... ok
+test services::active_probing::tests::test_health_stats_update ... ok
+test services::auto_failover::tests::test_all_iranian_prefixes_produce_valid_ips ... ok
+test services::auto_failover::tests::test_failover_on_packet_loss ... ok
+test adapters::atomic_config::tests::test_write_with_backup ... ok
+test services::auto_failover::tests::test_failover_on_threshold ... ok
+test services::active_probing::tests::test_tcp_probe_localhost ... ok
+test services::auto_failover::tests::test_iranian_source_ip_format ... ok
+test services::auto_failover::tests::test_recovery_emits_event ... ok
+test services::bulk_worker::tests::test_batch_size ... ok
+test services::cost_optimizer::tests::test_compare_providers ... ok
+test services::cost_optimizer::tests::test_find_cheapest ... ok
+test services::cost_optimizer::tests::test_instance_pricing_monthly_cost ... ok
+test services::delta_sync::tests::test_checksum_generation ... ok
+test services::live_quota::tests::test_quota_exceeded_alert ... ok
+test services::delta_sync::tests::test_delta_calculation ... ok
+test services::live_quota::tests::test_quota_warning_alert ... ok
+test services::live_quota::tests::test_reseller_stats ... ok
+test services::mesh_orchestrator::tests::test_health_score ... ok
+test services::mesh_orchestrator::tests::test_mesh_stats ... ok
+test adapters::nftables_manager::tests::test_status ... ok
+test services::mesh_orchestrator::tests::test_node_selection_least_connections ... ok
+test services::mesh_orchestrator::tests::test_rebalancing ... ok
+test services::native_alerts::tests::test_alert_creation ... ok
+test services::native_alerts::tests::test_alert_severity_ordering ... ok
+test services::native_alerts::tests::test_rate_limiter ... ok
+test services::predictive_scaling::tests::test_forecaster_ema ... ok
+test services::predictive_scaling::tests::test_forecaster_sma ... ok
+test services::predictive_scaling::tests::test_scale_down_recommendation ... ok
+test services::predictive_scaling::tests::test_trend_detection ... ok
+test services::predictive_scaling::tests::test_scale_up_recommendation ... ok
+test services::reseller_billing::tests::test_annual_discount ... ok
+test services::reseller_billing::tests::test_invoice_calculation ... ok
+test services::reseller_billing::tests::test_overage_charges ... ok
+test services::reseller_billing::tests::test_tier_limits ... ok
+test services::reseller_billing::tests::test_tier_pricing ... ok
+test services::reseller_billing::tests::test_subscription_creation ... ok
+test services::reseller_billing::tests::test_usage_within_limits ... ok
+test services::route_optimizer::tests::test_linear_model ... ok
+test services::route_optimizer::tests::test_recommendations ... ok
+test services::route_optimizer::tests::test_route_metrics_score ... ok
+test services::route_optimizer::tests::test_route_optimizer ... ok
+test services::sidecar_manager::tests::test_resource_limits_default ... ok
+test services::sidecar_manager::tests::test_sidecar_manager_creation ... ok
+test services::tls_fingerprint::tests::test_chrome_fingerprint ... ok
+test services::tls_fingerprint::tests::test_fingerprint_rotation ... ok
+test services::tls_fingerprint::tests::test_tls_version_bytes ... ok
+test services::tls_fingerprint::tests::test_random_fingerprint ... ok
+test services::traffic_obfuscation::tests::test_domain_fronting ... ok
+test services::traffic_obfuscation::tests::test_http2_wrapping ... ok
+test services::traffic_obfuscation::tests::test_padding ... ok
+test services::traffic_obfuscation::tests::test_tls_wrapping ... ok
+test ui::components::client_lifecycle::tests::test_client_status_active ... ok
+test services::traffic_obfuscation::tests::test_websocket_wrapping ... ok
+test ui::components::client_lifecycle::tests::test_client_status_disabled ... ok
+test ui::components::client_lifecycle::tests::test_format_bytes ... ok
+test ui::components::secret_generator::tests::test_generate_short_id ... ok
+test ui::components::secret_generator::tests::test_generate_reality_keypair ... ok
+test ui::components::secret_generator::tests::test_generate_uuid_v4 ... ok
+test ui::components::sparkline::tests::test_format_rate ... ok
+test ui::components::sparkline::tests::test_generate_path_empty ... ok
+test ui::components::sparkline::tests::test_generate_path_single_point ... ok
+test ui::components::statistic_card::tests::test_statistic_color_classes ... ok
+test ui::components::statistic_card::tests::test_trend_direction_default ... ok
+test ui::components::status_indicator::tests::test_format_bytes_short ... ok
+test ui::components::status_indicator::tests::test_get_status_classes ... ok
+test ui::components::transport_matrix::tests::test_network_type_labels ... ok
+test ui::components::transport_matrix::tests::test_protocol_compatibility ... ok
+test ui::components::transport_matrix::tests::test_security_type_labels ... ok
+test ui::server_fns::tests::test_core_action_serialization ... ok
+test ui::server_fns::tests::test_inbound_default ... ok
+test ui::server_fns::tests::test_login_request_serialization ... ok
+test ui::state::tests::test_core_connectivity_is_connected ... ok
+test ui::server_fns::tests::test_traffic_stat ... ok
+test ui::state::tests::test_notification_type ... ok
+test ui::state::tests::test_core_connectivity_status_text ... ok
+test services::telemetry::tests::test_telemetry_service ... ok
+
+test result: ok. 119 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.20s
+
+     Running unittests src/main.rs (target/debug/deps/rr_ui-44b1d8205cdfbb9b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/cli.rs (target/debug/deps/rr_ui_cli-72e5e2fc0423af09)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/migrate.rs (target/debug/deps/rr_ui_migrate-5d3283823f0ebd27)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/cli_command_test.rs (target/debug/deps/cli_command_test-0d043586122e8289)
+
+running 5 tests
+test test_logs_request ... ok
+test test_password_reset_request ... ok
+test test_settings_response ... ok
+test test_uds_request_serialization ... ok
+test test_uds_response_serialization ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/core_parity_tests.rs (target/debug/deps/core_parity_tests-ce9bc38a587600ee)
+
+running 8 tests
+test test_trojan_parity ... ok
+test test_available_cores ... ok
+test test_hysteria2_singbox_exclusive ... ok
+test test_tuic_singbox_exclusive ... ok
+test test_core_factory ... ok
+test test_vless_parity ... ok
+test test_vmess_parity ... ok
+test test_core_lifecycle ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/dashboard_stats_test.rs (target/debug/deps/dashboard_stats_test-9bf74164015f09da)
+
+running 2 tests
+test test_aggregation_logic ... ok
+test test_history_pruning_logic ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration_ui.rs (target/debug/deps/integration_ui-0b23bf5e9d258c20)
+
+running 2 tests
+test test_embedded_assets ... FAILED
+test test_ui_smoke ... ok
+
+failures:
+
+---- test_embedded_assets stdout ----
+
+thread 'test_embedded_assets' (143983) panicked at rr-ui/tests/integration_ui.rs:30:5:
+layout.css should be embedded
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_embedded_assets
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p rr-ui --test integration_ui`

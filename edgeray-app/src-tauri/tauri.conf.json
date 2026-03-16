@@ -1,0 +1,82 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "edgeray-app",
+  "version": "0.1.0",
+  "identifier": "com.jrad.edgeray-app",
+  "build": {
+    "beforeDevCommand": "dx serve --port 1420",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "sh build-mobile.sh",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "edgeray-app",
+        "width": 800,
+        "height": 600,
+        "transparent": true,
+        "decorations": true,
+        "windowEffects": {
+          "effects": [
+            "acrylic",
+            "mica"
+          ],
+          "state": "active"
+        }
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "iOS": {
+      "developmentTeam": "",
+      "frameworks": [
+        "NetworkExtension.framework"
+      ]
+    },
+    "android": {
+      "minSdkVersion": 30
+    },
+    "linux": {
+      "deb": {
+        "files": {
+          "/usr/share/README.md": "../README.md",
+          "/usr/share/assets": "../assets/"
+        }
+      }
+    },
+    "windows": {
+      "webviewInstallMode": {
+        "type": "offlineInstaller"
+      },
+      "wix": {
+        "language": "en-US"
+      }
+    },
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {
+    "camera": {
+      "permissions": [
+        "camera:allow-capture"
+      ]
+    },
+    "barcode-scanner": {
+      "permissions": [
+        "camera:allow-capture"
+      ]
+    }
+  }
+}

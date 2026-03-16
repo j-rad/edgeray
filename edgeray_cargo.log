@@ -1,0 +1,308 @@
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /home/jrad/RustroverProjects/edgeray-workspace/rustray/Cargo.toml
+workspace: /home/jrad/RustroverProjects/edgeray-workspace/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /home/jrad/RustroverProjects/edgeray-workspace/rr-ui/Cargo.toml
+workspace: /home/jrad/RustroverProjects/edgeray-workspace/Cargo.toml
+    Checking rustray v1.0.0 (/home/jrad/RustroverProjects/edgeray-workspace/rustray)
+warning: unused import: `crate::transport::AsyncStream`
+ --> rustray/src/transport/db_mimic.rs:9:5
+  |
+9 | use crate::transport::AsyncStream;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `std::net::SocketAddr`
+  --> rustray/src/transport/flow_j_multiport.rs:11:5
+   |
+11 | use std::net::SocketAddr;
+   |     ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `tokio::sync::Mutex`
+  --> rustray/src/transport/flow_j_multiport.rs:14:5
+   |
+14 | use tokio::sync::Mutex;
+   |     ^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `HashMap`
+  --> rustray/src/transport/paqet.rs:10:24
+   |
+10 | use std::collections::{HashMap, VecDeque};
+   |                        ^^^^^^^
+
+warning: unused import: `Instant`
+  --> rustray/src/transport/paqet.rs:16:27
+   |
+16 | use std::time::{Duration, Instant, SystemTime, UNIX_E...
+   |                           ^^^^^^^
+
+warning: unused imports: `debug`, `error`, and `warn`
+  --> rustray/src/transport/paqet.rs:20:15
+   |
+20 | use tracing::{debug, error, warn};
+   |               ^^^^^  ^^^^^  ^^^^
+
+warning: unused import: `crate::protocols::stealth::ProbeTrap`
+ --> rustray/src/transport/reality.rs:6:5
+  |
+6 | use crate::protocols::stealth::ProbeTrap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+ --> rustray/src/app/assets/updater.rs:6:5
+  |
+6 | use std::collections::HashMap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+  --> rustray/src/app/assets/updater.rs:10:5
+   |
+10 | use std::sync::Arc;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused import: `PathBuf`
+ --> rustray/src/app/core_manager.rs:9:23
+  |
+9 | use std::path::{Path, PathBuf};
+  |                       ^^^^^^^
+
+warning: unused imports: `debug`, `error`, and `warn`
+  --> rustray/src/app/core_manager.rs:10:15
+   |
+10 | use tracing::{debug, error, info, warn};
+   |               ^^^^^  ^^^^^        ^^^^
+
+warning: unused import: `error`
+ --> rustray/src/app/mesh/discovery.rs:3:18
+  |
+3 | use log::{debug, error, info, warn};
+  |                  ^^^^^
+
+warning: unused import: `KeyPair`
+ --> rustray/src/app/mesh/discovery.rs:7:29
+  |
+7 | use ring::signature::{self, KeyPair};
+  |                             ^^^^^^^
+
+warning: unused import: `BTreeMap`
+ --> rustray/src/app/mesh/discovery.rs:8:24
+  |
+8 | use std::collections::{BTreeMap, HashMap};
+  |                        ^^^^^^^^
+
+warning: unused import: `Duration`
+  --> rustray/src/app/mesh/discovery.rs:11:17
+   |
+11 | use std::time::{Duration, SystemTime};
+   |                 ^^^^^^^^
+
+warning: unused imports: `Config` and `Outbound`
+ --> rustray/src/app/mesh/health.rs:8:21
+  |
+8 | use crate::config::{Config, Outbound};
+  |                     ^^^^^^  ^^^^^^^^
+
+warning: unused import: `AsyncReadExt`
+ --> rustray/src/app/metrics/prober.rs:4:17
+  |
+4 | use tokio::io::{AsyncReadExt, AsyncWriteExt};
+  |                 ^^^^^^^^^^^^
+
+warning: unused imports: `PeerJoinSignal` and `SignalingService`
+ --> rustray/src/app/reverse/mod.rs:7:23
+  |
+7 | ...eceiver, PeerJoinSignal, SignalingService, determin...
+  |             ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^
+
+warning: unused import: `RwLock`
+  --> rustray/src/app/reverse/mod.rs:19:26
+   |
+19 | use tokio::sync::{Mutex, RwLock};
+   |                          ^^^^^^
+
+warning: unused import: `error`
+  --> rustray/src/app/reverse/mod.rs:21:22
+   |
+21 | use tracing::{debug, error, info, warn};
+   |                      ^^^^^
+
+warning: unused imports: `SecureRandom` and `SystemRandom`
+ --> rustray/src/app/signaling.rs:6:18
+  |
+6 | use ring::rand::{SecureRandom, SystemRandom};
+  |                  ^^^^^^^^^^^^  ^^^^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+ --> rustray/src/app/signaling.rs:9:5
+  |
+9 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `crate::ffi::ConnectConfig`
+ --> rustray/src/ffi/mobile.rs:1:5
+  |
+1 | use crate::ffi::ConnectConfig;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::ffi::VpnCallback`
+ --> rustray/src/ffi/mobile.rs:2:5
+  |
+2 | use crate::ffi::VpnCallback;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `StreamEvent`, `Tun2SocksConfig`, `Tun2SocksEngine`, and `TunConfig`
+ --> rustray/src/ffi/mobile.rs:3:18
+  |
+3 | ...::{StreamEvent, Tun2SocksConfig, Tun2SocksEngine, TunConfig};
+  |       ^^^^^^^^^^^  ^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: `tokio::runtime::Runtime`
+ --> rustray/src/ffi/mobile.rs:7:5
+  |
+7 | use tokio::runtime::Runtime;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `tracing::info`
+ --> rustray/src/ffi/mobile.rs:8:5
+  |
+8 | use tracing::info;
+  |     ^^^^^^^^^^^^^
+
+warning: unused import: `std::io::Write`
+ --> rustray/src/types/parser.rs:8:5
+  |
+8 | use std::io::Write;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `crate::error::Result`
+ --> rustray/src/db.rs:5:5
+  |
+5 | use crate::error::Result;
+  |     ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `Deserialize` and `Serialize`
+ --> rustray/src/db.rs:6:13
+  |
+6 | use serde::{Deserialize, Serialize};
+  |             ^^^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+ --> rustray/src/db.rs:7:5
+  |
+7 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: use of deprecated function `base64::encode`: Use Engine::encode
+   --> rustray/src/api/auth_middleware.rs:137:21
+    |
+137 |             base64::encode(&payload),
+    |                     ^^^^^^
+    |
+    = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated function `base64::encode`: Use Engine::encode
+   --> rustray/src/api/auth_middleware.rs:138:21
+    |
+138 |             base64::encode(&signature)
+    |                     ^^^^^^
+
+warning: use of deprecated function `base64::encode`: Use Engine::encode
+   --> rustray/src/api/auth_middleware.rs:148:20
+    |
+148 |         Ok(base64::encode(&signature))
+    |                    ^^^^^^
+
+error[E0599]: no variant or associated item named `Quic` found for enum `hickory_resolver::config::Protocol` in the current scope
+  --> rustray/src/app/signaling.rs:45:59
+   |
+45 | ...ew(addr, Protocol::Quic);
+   |                       ^^^^ variant or associated item not found in `hickory_resolver::config::Protocol`
+
+warning: unused import: `Embed`
+  --> rustray/src/api/embedded_assets.rs:13:18
+   |
+13 | use rust_embed::{Embed, RustEmbed};
+   |                  ^^^^^
+
+warning: unused import: `rand::RngCore`
+  --> rustray/src/app/mesh/peer_registry.rs:32:5
+   |
+32 | use rand::RngCore;
+   |     ^^^^^^^^^^^^^
+
+warning: unused variable: `source`
+  --> rustray/src/inbounds/reverse_portal.rs:13:5
+   |
+13 |     source: String,
+   |     ^^^^^^ help: if this is intentional, prefix it with an underscore: `_source`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `rotation_frequency`
+  --> rustray/src/transport/flow_j_multiport.rs:54:9
+   |
+54 |         rotation_frequency: u32,
+   |         ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_rotation_frequency`
+
+warning: unused variable: `msg`
+   --> rustray/src/transport/pqc.rs:431:38
+    |
+431 | ...with_pk(pk: &[u8], msg: &[u8], sig: &DilithiumSig...
+    |                       ^^^ help: if this is intentional, prefix it with an underscore: `_msg`
+
+warning: variable does not need to be mutable
+   --> rustray/src/transport/tls_fragment.rs:148:17
+    |
+148 | ...   let mut state = std::mem::replace(&mut self.st...
+    |           ----^^^^^
+    |           |
+    |           help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `target_url`
+   --> rustray/src/speedtest.rs:106:13
+    |
+106 |         let target_url = "http://speedtest.google.co...
+    |             ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_target_url`
+
+warning: unused variable: `test_file_url`
+   --> rustray/src/speedtest.rs:114:13
+    |
+114 |         let test_file_url = "http://speed.cloudflare...
+    |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_test_file_url`
+
+warning: unused variable: `remote_name`
+   --> rustray/src/app/mesh/discovery.rs:107:29
+    |
+107 | ...           let remote_name = info.get_fullname();
+    |                   ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_remote_name`
+
+warning: unused variable: `addr`
+   --> rustray/src/app/mesh/discovery.rs:119:29
+    |
+119 | ...             let addr = SocketAddr::new(ip, port);
+    |                     ^^^^ help: if this is intentional, prefix it with an underscore: `_addr`
+
+warning: unused variable: `callback`
+   --> rustray/src/ffi/mod.rs:301:9
+    |
+301 |         callback: Option<Box<dyn VpnCallback>>,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_callback`
+
+warning: unused variable: `ipv4_re`
+  --> rustray/src/security/pii_filter.rs:26:9
+   |
+26 |     let ipv4_re =
+   |         ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_ipv4_re`
+
+warning: unused variable: `ipv6_re`
+  --> rustray/src/security/pii_filter.rs:35:9
+   |
+35 |     let ipv6_re =
+   |         ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_ipv6_re`
+
+For more information about this error, try `rustc --explain E0599`.
+warning: `rustray` (lib) generated 47 warnings
+error: could not compile `rustray` (lib) due to 1 previous error; 47 warnings emitted

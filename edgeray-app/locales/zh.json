@@ -1,0 +1,121 @@
+{
+    "app": {
+        "name": "EdgeRay",
+        "tagline": "下一代 VPN 客户端"
+    },
+    "screens": {
+        "dashboard": "仪表盘",
+        "servers": "服务器",
+        "groups": "分组",
+        "settings": "设置",
+        "routing": "路由",
+        "assets": "资源",
+        "logs": "日志"
+    },
+    "connection": {
+        "connect": "连接",
+        "disconnect": "断开",
+        "connecting": "连接中...",
+        "connected": "已连接",
+        "disconnected": "已断开",
+        "failed": "连接失败"
+    },
+    "server": {
+        "add": "添加服务器",
+        "edit": "编辑服务器",
+        "delete": "删除服务器",
+        "share": "分享",
+        "test": "测试连接",
+        "ping": "延迟测试",
+        "no_servers": "未配置服务器",
+        "add_to_start": "添加一个服务器以开始使用"
+    },
+    "subscription": {
+        "title": "订阅管理",
+        "add": "添加订阅",
+        "update": "更新",
+        "update_all": "全部更新",
+        "auto_update": "自动更新",
+        "update_interval": "更新间隔",
+        "last_updated": "上次更新",
+        "updating": "更新中...",
+        "no_subscriptions": "无订阅",
+        "add_subscription_hint": "添加订阅链接以导入服务器"
+    },
+    "settings": {
+        "general": "通用",
+        "connection": "连接",
+        "about": "关于",
+        "theme": "主题",
+        "system": "系统",
+        "dark": "深色",
+        "light": "浅色",
+        "start_on_boot": "开机启动",
+        "allow_insecure": "允许不安全连接",
+        "connection_mode": "连接模式",
+        "rule": "规则",
+        "global": "全局",
+        "direct": "直连",
+        "routing_rules": "路由规则",
+        "per_app_proxy": "分应用代理",
+        "sniffing": "流量嗅探",
+        "sniffing_hint": "重写目标 IP",
+        "version": "版本",
+        "github": "Github 仓库",
+        "privacy": "隐私政策",
+        "license": "遵循 GPL v3.0 协议"
+    },
+    "routing": {
+        "title": "路由规则",
+        "mode": "路由模式",
+        "bypass_lan": "绕过局域网",
+        "bypass_mainland": "绕过中国大陆",
+        "global_proxy": "全局代理",
+        "custom_rules": "自定义规则",
+        "add_rule": "添加规则",
+        "domain": "域名",
+        "ip": "IP 地址",
+        "geosite": "GeoSite",
+        "geoip": "GeoIP",
+        "action": "动作",
+        "proxy": "代理",
+        "direct": "直连",
+        "block": "阻断"
+    },
+    "assets": {
+        "title": "资源管理",
+        "geoip": "GeoIP 数据库",
+        "geosite": "GeoSite 数据库",
+        "download": "下载",
+        "update": "更新",
+        "delete": "删除",
+        "size": "大小",
+        "last_updated": "上次更新",
+        "downloading": "下载中...",
+        "no_assets": "未下载资源"
+    },
+    "logs": {
+        "title": "日志",
+        "clear": "清空",
+        "export": "导出",
+        "level": "日志级别",
+        "debug": "调试",
+        "info": "信息",
+        "warn": "警告",
+        "error": "错误",
+        "no_logs": "暂无日志"
+    },
+    "common": {
+        "save": "保存",
+        "cancel": "取消",
+        "delete": "删除",
+        "edit": "编辑",
+        "done": "完成",
+        "loading": "加载中...",
+        "error": "错误",
+        "success": "成功",
+        "confirm": "确认",
+        "yes": "是",
+        "no": "否"
+    }
+}

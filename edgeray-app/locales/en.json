@@ -1,0 +1,121 @@
+{
+    "app": {
+        "name": "EdgeRay",
+        "tagline": "Next-Gen VPN Client"
+    },
+    "screens": {
+        "dashboard": "Dashboard",
+        "servers": "Servers",
+        "groups": "Groups",
+        "settings": "Settings",
+        "routing": "Routing",
+        "assets": "Assets",
+        "logs": "Logs"
+    },
+    "connection": {
+        "connect": "Connect",
+        "disconnect": "Disconnect",
+        "connecting": "Connecting...",
+        "connected": "Connected",
+        "disconnected": "Disconnected",
+        "failed": "Connection Failed"
+    },
+    "server": {
+        "add": "Add Server",
+        "edit": "Edit Server",
+        "delete": "Delete Server",
+        "share": "Share",
+        "test": "Test Connection",
+        "ping": "Ping",
+        "no_servers": "No servers configured",
+        "add_to_start": "Add a server to get started"
+    },
+    "subscription": {
+        "title": "Subscriptions",
+        "add": "Add Subscription",
+        "update": "Update",
+        "update_all": "Update All",
+        "auto_update": "Auto Update",
+        "update_interval": "Update Interval",
+        "last_updated": "Last Updated",
+        "updating": "Updating...",
+        "no_subscriptions": "No subscriptions",
+        "add_subscription_hint": "Add a subscription URL to import servers"
+    },
+    "settings": {
+        "general": "General",
+        "connection": "Connection",
+        "about": "About",
+        "theme": "Theme",
+        "system": "System",
+        "dark": "Dark",
+        "light": "Light",
+        "start_on_boot": "Start on Boot",
+        "allow_insecure": "Allow Insecure",
+        "connection_mode": "Connection Mode",
+        "rule": "Rule",
+        "global": "Global",
+        "direct": "Direct",
+        "routing_rules": "Routing Rules",
+        "per_app_proxy": "Per-App Proxy",
+        "sniffing": "Sniffing",
+        "sniffing_hint": "Override destination IP",
+        "version": "Version",
+        "github": "Github Repository",
+        "privacy": "Privacy Policy",
+        "license": "Licensed under GPL v3.0"
+    },
+    "routing": {
+        "title": "Routing Rules",
+        "mode": "Routing Mode",
+        "bypass_lan": "Bypass LAN",
+        "bypass_mainland": "Bypass Mainland",
+        "global_proxy": "Global Proxy",
+        "custom_rules": "Custom Rules",
+        "add_rule": "Add Rule",
+        "domain": "Domain",
+        "ip": "IP Address",
+        "geosite": "GeoSite",
+        "geoip": "GeoIP",
+        "action": "Action",
+        "proxy": "Proxy",
+        "direct": "Direct",
+        "block": "Block"
+    },
+    "assets": {
+        "title": "Asset Manager",
+        "geoip": "GeoIP Database",
+        "geosite": "GeoSite Database",
+        "download": "Download",
+        "update": "Update",
+        "delete": "Delete",
+        "size": "Size",
+        "last_updated": "Last Updated",
+        "downloading": "Downloading...",
+        "no_assets": "No assets downloaded"
+    },
+    "logs": {
+        "title": "Logs",
+        "clear": "Clear",
+        "export": "Export",
+        "level": "Log Level",
+        "debug": "Debug",
+        "info": "Info",
+        "warn": "Warning",
+        "error": "Error",
+        "no_logs": "No logs available"
+    },
+    "common": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "done": "Done",
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success",
+        "confirm": "Confirm",
+        "yes": "Yes",
+        "no": "No"
+    }
+}

@@ -1,0 +1,16 @@
+{
+  "application": {
+    "name": "edgeray-app",
+    "default_platform": "desktop",
+    "dioxus_version": "0.7.2"
+  },
+  "web_settings": {
+    "app_name": "EdgeRay",
+    "proxy": [],
+    "index": "index.html",
+    "base_path": "",
+    "head": [
+      "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\">"
+    ]
+  }
+}

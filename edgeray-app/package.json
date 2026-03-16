@@ -1,0 +1,22 @@
+{
+  "name": "edgeray-app",
+  "version": "1.0.0",
+  "description": "This template should help get you started developing with Tauri and Dioxus.",
+  "main": "tailwind.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind:build": "tailwindcss -i ./assets/input.css -o ./assets/styles.css --minify",
+    "tailwind:watch": "tailwindcss -i ./assets/input.css -o ./assets/styles.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4"
+  }
+}

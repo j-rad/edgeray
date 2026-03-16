@@ -1,0 +1,534 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ========================================
+   DEEP NIGHT NEON THEME
+   Cyan Neon + Cyber Purple + Glassmorphism
+   ======================================== */
+
+:root {
+  /* === DEEP NIGHT BACKGROUNDS === */
+  --background: #010103;
+  /* The Void - Pure deep night */
+  --surface: #030308;
+  /* Obsidian Abyss */
+  --surface-elevated: #080812;
+  /* Elevated panels */
+
+  /* === ELECTRIC CYAN NEON === */
+  --primary: #00f0ff;
+  /* Cyber Cyan */
+  --primary-bright: #00ffff;
+  /* Plasma Cyan */
+  --primary-dim: rgba(0, 240, 255, 0.15);
+  --primary-glow: rgba(0, 240, 255, 0.7);
+  --primary-intense: rgba(0, 240, 255, 0.9);
+
+  /* === CYBER PURPLE === */
+  --purple: #bf00ff;
+  /* Electric Purple */
+  --purple-bright: #d000ff;
+  /* Plasma Purple */
+  --purple-dim: rgba(191, 0, 255, 0.15);
+  --purple-glow: rgba(191, 0, 255, 0.7);
+  --purple-intense: rgba(191, 0, 255, 0.9);
+
+  /* === NEON MINT/EMERALD === */
+  --emerald: #00ff9d;
+  /* Neon Mint */
+  --emerald-dim: rgba(0, 255, 157, 0.15);
+  --emerald-glow: rgba(0, 255, 157, 0.6);
+
+  /* === HIGH-VOLTAGE WARNING === */
+  --warning: #fbff00;
+  /* High-Voltage Yellow */
+  --warning-dim: rgba(251, 255, 0, 0.15);
+  --warning-glow: rgba(251, 255, 0, 0.5);
+
+  /* === GLASSMORPHISM === */
+  --glass-bg: rgba(5, 5, 20, 0.7);
+  --glass-bg-light: rgba(10, 10, 30, 0.5);
+  --glass-border-top: rgba(255, 255, 255, 0.12);
+  --glass-border-side: rgba(255, 255, 255, 0.06);
+  --glass-border-bottom: rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(0, 240, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(191, 0, 255, 0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 20% 80%, rgba(0, 240, 255, 0.02) 0%, transparent 40%);
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 240, 255, 0.3), rgba(191, 0, 255, 0.3));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary), var(--purple));
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ========================================
+   ADVANCED GLASSMORPHISM
+   ======================================== */
+
+.glass-panel {
+  background: linear-gradient(135deg, var(--glass-bg), rgba(5, 5, 15, 0.5));
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+
+  /* Multi-layer border with lighting direction */
+  border-top: 1px solid var(--glass-border-top);
+  border-left: 1px solid var(--glass-border-side);
+  border-right: 1px solid var(--glass-border-side);
+  border-bottom: 1px solid var(--glass-border-bottom);
+
+  /* Subtle inner glow */
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.05),
+    0 8px 32px 0 rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.glass-panel-hover:hover {
+  background: linear-gradient(135deg,
+      rgba(0, 240, 255, 0.05),
+      rgba(191, 0, 255, 0.03));
+  border-top: 1px solid rgba(0, 240, 255, 0.25);
+  box-shadow:
+    inset 0 1px 1px rgba(0, 240, 255, 0.1),
+    0 0 30px rgba(0, 240, 255, 0.1),
+    0 0 60px rgba(191, 0, 255, 0.05);
+}
+
+/* Ultra Glass - More transparency */
+.glass-ultra {
+  background: rgba(2, 2, 8, 0.85);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 0 40px rgba(0, 0, 0, 0.4),
+    inset 0 0 30px rgba(0, 240, 255, 0.02);
+}
+
+/* ========================================
+   NEON GLOW UTILITIES
+   ======================================== */
+
+/* === CYAN GLOW === */
+.shadow-glow-cyan {
+  box-shadow:
+    0 0 20px var(--primary-dim),
+    0 0 40px var(--primary-dim),
+    0 0 60px rgba(0, 240, 255, 0.1);
+}
+
+.shadow-glow-cyan-intense {
+  box-shadow:
+    0 0 10px var(--primary-glow),
+    0 0 30px var(--primary-dim),
+    0 0 60px var(--primary-dim),
+    0 0 100px rgba(0, 240, 255, 0.1);
+}
+
+.text-glow-cyan {
+  text-shadow:
+    0 0 10px var(--primary-glow),
+    0 0 20px var(--primary-dim),
+    0 0 40px var(--primary-dim);
+}
+
+.border-glow-cyan {
+  border-color: var(--primary);
+  box-shadow:
+    0 0 10px var(--primary-dim),
+    inset 0 0 10px var(--primary-dim);
+}
+
+/* === PURPLE GLOW === */
+.shadow-glow-purple {
+  box-shadow:
+    0 0 20px var(--purple-dim),
+    0 0 40px var(--purple-dim),
+    0 0 60px rgba(191, 0, 255, 0.1);
+}
+
+.shadow-glow-purple-intense {
+  box-shadow:
+    0 0 10px var(--purple-glow),
+    0 0 30px var(--purple-dim),
+    0 0 60px var(--purple-dim),
+    0 0 100px rgba(191, 0, 255, 0.1);
+}
+
+.text-glow-purple {
+  text-shadow:
+    0 0 10px var(--purple-glow),
+    0 0 20px var(--purple-dim),
+    0 0 40px var(--purple-dim);
+}
+
+.border-glow-purple {
+  border-color: var(--purple);
+  box-shadow:
+    0 0 10px var(--purple-dim),
+    inset 0 0 10px var(--purple-dim);
+}
+
+/* === EMERALD GLOW === */
+.shadow-glow-emerald {
+  box-shadow:
+    0 0 20px var(--emerald-dim),
+    0 0 40px var(--emerald-dim);
+}
+
+.text-glow-emerald {
+  text-shadow:
+    0 0 10px var(--emerald-glow),
+    0 0 20px var(--emerald-dim);
+}
+
+/* === MIXED NEON GRADIENT GLOW === */
+.shadow-glow-neon {
+  box-shadow:
+    0 0 20px rgba(0, 240, 255, 0.15),
+    0 0 40px rgba(191, 0, 255, 0.1),
+    0 0 80px rgba(0, 240, 255, 0.05);
+}
+
+/* ========================================
+   GRID PATTERN BACKGROUNDS
+   ======================================== */
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-grid-pattern-purple {
+  background-image:
+    linear-gradient(rgba(191, 0, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(191, 0, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Hex Grid Pattern */
+.bg-hex-pattern {
+  background-image: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* ========================================
+   CRT SCANLINE EFFECT
+   ======================================== */
+
+.scanlines {
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.15) 50%,
+      rgba(0, 0, 0, 0.15));
+  background-size: 100% 4px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.08;
+}
+
+/* ========================================
+   iOS SAFE AREA UTILITIES
+   ======================================== */
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
+.pl-safe {
+  padding-left: env(safe-area-inset-left);
+}
+
+.pr-safe {
+  padding-right: env(safe-area-inset-right);
+}
+
+.min-h-dvh {
+  min-height: 100dvh;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes blob {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes pulse-fast {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes neon-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow:
+      0 0 10px var(--primary-glow),
+      0 0 30px var(--primary-dim);
+  }
+
+  50% {
+    opacity: 0.8;
+    box-shadow:
+      0 0 20px var(--primary-glow),
+      0 0 50px var(--primary-dim),
+      0 0 80px var(--primary-dim);
+  }
+}
+
+@keyframes cyber-flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  93% {
+    opacity: 0.8;
+  }
+
+  94% {
+    opacity: 1;
+  }
+
+  96% {
+    opacity: 0.9;
+  }
+
+  97% {
+    opacity: 1;
+  }
+}
+
+@keyframes glow-breathe {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--primary-dim), 0 0 40px var(--primary-dim);
+  }
+
+  50% {
+    box-shadow: 0 0 30px var(--primary-glow), 0 0 60px var(--primary-dim);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: spin-slow 15s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse 12s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-pulse-fast {
+  animation: pulse-fast 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-blob {
+  animation: blob 10s infinite;
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.animate-cyber-flicker {
+  animation: cyber-flicker 4s linear infinite;
+}
+
+.animate-glow-breathe {
+  animation: glow-breathe 3s ease-in-out infinite;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.text-shadow-glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.mask-linear-bottom {
+  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+
+/* Neon Button Hover Effect */
+.neon-hover-cyan:hover {
+  box-shadow:
+    0 0 20px var(--primary-dim),
+    0 0 40px var(--primary-dim);
+  border-color: var(--primary);
+}
+
+.neon-hover-purple:hover {
+  box-shadow:
+    0 0 20px var(--purple-dim),
+    0 0 40px var(--purple-dim);
+  border-color: var(--purple);
+}
+
+/* Gradient Text */
+.text-gradient-neon {
+  background: linear-gradient(135deg, var(--primary), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ========================================
+   SELECTION
+   ======================================== */
+
+::selection {
+  background-color: var(--primary);
+  color: black;
+}

@@ -1,0 +1,121 @@
+{
+    "app": {
+        "name": "EdgeRay",
+        "tagline": "Next-Gen VPN Client"
+    },
+    "screens": {
+        "dashboard": "داشبورد",
+        "servers": "سرورها",
+        "groups": "گروه‌ها",
+        "settings": "تنظیمات",
+        "routing": "مسیریابی",
+        "assets": "منابع",
+        "logs": "گزارش‌ها"
+    },
+    "connection": {
+        "connect": "اتصال",
+        "disconnect": "قطع اتصال",
+        "connecting": "در حال اتصال...",
+        "connected": "متصل شد",
+        "disconnected": "قطع شد",
+        "failed": "اتصال ناموفق بود"
+    },
+    "server": {
+        "add": "افزودن سرور",
+        "edit": "ویرایش سرور",
+        "delete": "حذف سرور",
+        "share": "اشتراک‌گذاری",
+        "test": "تست اتصال",
+        "ping": "پینگ",
+        "no_servers": "هیچ سروری پیکربندی نشده است",
+        "add_to_start": "برای شروع یک سرور اضافه کنید"
+    },
+    "subscription": {
+        "title": "اشتراک‌ها",
+        "add": "افزودن اشتراک",
+        "update": "بروزرسانی",
+        "update_all": "بروزرسانی همه",
+        "auto_update": "بروزرسانی خودکار",
+        "update_interval": "بازه بروزرسانی",
+        "last_updated": "آخرین بروزرسانی",
+        "updating": "در حال بروزرسانی...",
+        "no_subscriptions": "هیچ اشتراکی وجود ندارد",
+        "add_subscription_hint": "برای وارد کردن سرورها آدرس اشتراک را اضافه کنید"
+    },
+    "settings": {
+        "general": "عمومی",
+        "connection": "اتصال",
+        "about": "درباره",
+        "theme": "پوسته",
+        "system": "سیستم",
+        "dark": "تاریک",
+        "light": "روشن",
+        "start_on_boot": "اجرا هنگام بوت",
+        "allow_insecure": "اجازه اتصال ناامن",
+        "connection_mode": "حالت اتصال",
+        "rule": "قانون‌مند",
+        "global": "جهانی (Global)",
+        "direct": "مستقیم",
+        "routing_rules": "قوانین مسیریابی",
+        "per_app_proxy": "پراکسی برنامه‌ها",
+        "sniffing": "شنود (Sniffing)",
+        "sniffing_hint": "بازنویسی IP مقصد",
+        "version": "نسخه",
+        "github": "مخزن گیت‌هاب",
+        "privacy": "سیاست محرمانگی",
+        "license": "تحت مجوز GPL v3.0"
+    },
+    "routing": {
+        "title": "قوانین مسیریابی",
+        "mode": "حالت مسیریابی",
+        "bypass_lan": "دور زدن شبکه محلی (LAN)",
+        "bypass_mainland": "دور زدن سرزمین اصلی",
+        "global_proxy": "پراکسی جهانی",
+        "custom_rules": "قوانین شخصی",
+        "add_rule": "افزودن قانون",
+        "domain": "دامنه",
+        "ip": "آدرس IP",
+        "geosite": "GeoSite",
+        "geoip": "GeoIP",
+        "action": "عملیات",
+        "proxy": "پراکسی",
+        "direct": "مستقیم",
+        "block": "مسدود"
+    },
+    "assets": {
+        "title": "مدیریت منابع",
+        "geoip": "پایگاه داده GeoIP",
+        "geosite": "پایگاه داده GeoSite",
+        "download": "دانلود",
+        "update": "بروزرسانی",
+        "delete": "حذف",
+        "size": "حجم",
+        "last_updated": "آخرین بروزرسانی",
+        "downloading": "در حال دانلود...",
+        "no_assets": "هیچ منبعی دانلود نشده است"
+    },
+    "logs": {
+        "title": "گزارش‌ها",
+        "clear": "پاک کردن",
+        "export": "خروجی گرفتن",
+        "level": "سطح گزارش",
+        "debug": "Debug",
+        "info": "Info",
+        "warn": "Warning",
+        "error": "Error",
+        "no_logs": "هیچ گزارشی موجود نیست"
+    },
+    "common": {
+        "save": "ذخیره",
+        "cancel": "لغو",
+        "delete": "حذف",
+        "edit": "ویرایش",
+        "done": "انجام شد",
+        "loading": "لدر حال بارگذاری...",
+        "error": "خطا",
+        "success": "موفق",
+        "confirm": "تایید",
+        "yes": "بله",
+        "no": "خیر"
+    }
+}

@@ -1,0 +1,648 @@
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /home/jrad/RustroverProjects/edgeray-workspace/rustray/Cargo.toml
+workspace: /home/jrad/RustroverProjects/edgeray-workspace/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /home/jrad/RustroverProjects/edgeray-workspace/rr-ui/Cargo.toml
+workspace: /home/jrad/RustroverProjects/edgeray-workspace/Cargo.toml
+rustray/src/transport/db_mimic.rs:9:5: warning: unused import: `crate::transport::AsyncStream`
+rustray/src/transport/flow_j_multiport.rs:11:5: warning: unused import: `std::net::SocketAddr`
+rustray/src/transport/flow_j_multiport.rs:14:5: warning: unused import: `tokio::sync::Mutex`
+rustray/src/transport/paqet.rs:10:24: warning: unused import: `HashMap`
+rustray/src/transport/paqet.rs:16:27: warning: unused import: `Instant`
+rustray/src/transport/paqet.rs:20:15: warning: unused imports: `debug`, `error`, and `warn`
+rustray/src/transport/reality.rs:6:5: warning: unused import: `crate::protocols::stealth::ProbeTrap`
+rustray/src/app/assets/updater.rs:6:5: warning: unused import: `std::collections::HashMap`
+rustray/src/app/assets/updater.rs:10:5: warning: unused import: `std::sync::Arc`
+rustray/src/app/core_manager.rs:9:23: warning: unused import: `PathBuf`
+rustray/src/app/core_manager.rs:10:15: warning: unused imports: `debug`, `error`, and `warn`
+rustray/src/app/mesh/discovery.rs:3:18: warning: unused import: `error`
+rustray/src/app/mesh/discovery.rs:7:29: warning: unused import: `KeyPair`
+rustray/src/app/mesh/discovery.rs:8:24: warning: unused import: `BTreeMap`
+rustray/src/app/mesh/discovery.rs:11:17: warning: unused import: `Duration`
+rustray/src/app/mesh/health.rs:8:21: warning: unused imports: `Config` and `Outbound`
+rustray/src/app/metrics/prober.rs:4:17: warning: unused import: `AsyncReadExt`
+rustray/src/app/reverse/mod.rs:7:23: warning: unused imports: `PeerJoinSignal` and `SignalingService`
+rustray/src/app/reverse/mod.rs:19:26: warning: unused import: `RwLock`
+rustray/src/app/reverse/mod.rs:21:22: warning: unused import: `error`
+rustray/src/app/signaling.rs:6:18: warning: unused imports: `SecureRandom` and `SystemRandom`
+rustray/src/app/signaling.rs:9:5: warning: unused import: `std::sync::Arc`
+rustray/src/ffi/mobile.rs:1:5: warning: unused import: `crate::ffi::ConnectConfig`
+rustray/src/ffi/mobile.rs:2:5: warning: unused import: `crate::ffi::VpnCallback`
+rustray/src/ffi/mobile.rs:3:18: warning: unused imports: `StreamEvent`, `Tun2SocksConfig`, `Tun2SocksEngine`, and `TunConfig`
+rustray/src/ffi/mobile.rs:7:5: warning: unused import: `tokio::runtime::Runtime`
+rustray/src/ffi/mobile.rs:8:5: warning: unused import: `tracing::info`
+rustray/src/types/parser.rs:8:5: warning: unused import: `std::io::Write`
+rustray/src/db.rs:5:5: warning: unused import: `crate::error::Result`
+rustray/src/db.rs:6:13: warning: unused imports: `Deserialize` and `Serialize`
+rustray/src/db.rs:7:5: warning: unused import: `std::sync::Arc`
+rustray/src/api/auth_middleware.rs:137:21: warning: use of deprecated function `base64::encode`: Use Engine::encode
+rustray/src/api/auth_middleware.rs:138:21: warning: use of deprecated function `base64::encode`: Use Engine::encode
+rustray/src/api/auth_middleware.rs:148:20: warning: use of deprecated function `base64::encode`: Use Engine::encode
+rustray/src/api/embedded_assets.rs:13:18: warning: unused import: `Embed`
+rustray/src/app/mesh/peer_registry.rs:32:5: warning: unused import: `rand::RngCore`
+rustray/src/inbounds/reverse_portal.rs:13:5: warning: unused variable: `source`: help: if this is intentional, prefix it with an underscore: `_source`
+rustray/src/transport/flow_j_multiport.rs:54:9: warning: unused variable: `rotation_frequency`: help: if this is intentional, prefix it with an underscore: `_rotation_frequency`
+rustray/src/transport/pqc.rs:431:38: warning: unused variable: `msg`: help: if this is intentional, prefix it with an underscore: `_msg`
+rustray/src/transport/tls_fragment.rs:148:17: warning: variable does not need to be mutable
+rustray/src/speedtest.rs:106:13: warning: unused variable: `target_url`: help: if this is intentional, prefix it with an underscore: `_target_url`
+rustray/src/speedtest.rs:114:13: warning: unused variable: `test_file_url`: help: if this is intentional, prefix it with an underscore: `_test_file_url`
+rustray/src/app/mesh/discovery.rs:107:29: warning: unused variable: `remote_name`: help: if this is intentional, prefix it with an underscore: `_remote_name`
+rustray/src/app/mesh/discovery.rs:119:29: warning: unused variable: `addr`: help: if this is intentional, prefix it with an underscore: `_addr`
+rustray/src/ffi/mod.rs:301:9: warning: unused variable: `callback`: help: if this is intentional, prefix it with an underscore: `_callback`
+rustray/src/security/pii_filter.rs:26:9: warning: unused variable: `ipv4_re`: help: if this is intentional, prefix it with an underscore: `_ipv4_re`
+rustray/src/security/pii_filter.rs:35:9: warning: unused variable: `ipv6_re`: help: if this is intentional, prefix it with an underscore: `_ipv6_re`
+rustray/src/config.rs:901:4: warning: function `default_qos` is never used
+rustray/src/transport/db_mimic.rs:22:7: warning: constant `PG_TYPE_QUERY` is never used
+rustray/src/transport/db_mimic.rs:23:7: warning: constant `PG_TYPE_TERMINATE` is never used
+rustray/src/transport/db_mimic.rs:30:7: warning: constant `REDIS_ARRAY` is never used
+rustray/src/transport/mux.rs:60:5: warning: field `sessions` is never read
+rustray/src/transport/paqet.rs:23:7: warning: constant `KCP_RTO_NDL` is never used
+rustray/src/transport/paqet.rs:36:7: warning: constant `KCP_ACK_FAST` is never used
+rustray/src/transport/pqc.rs:36:7: warning: constant `MLKEM_768_SS_SIZE` is never used
+rustray/src/transport/slipstream.rs:22:7: warning: constant `QUIC_MTU` is never used
+rustray/src/transport/tls_fragment.rs:33:7: warning: constant `TARGET_FRAGMENTS` is never used
+rustray/src/transport/tls_fragment.rs:59:5: warning: field `settings` is never read
+rustray/src/transport/tls_fragment.rs:300:5: warning: field `mss` is never read
+rustray/src/api/auth_middleware.rs:41:5: warning: field `refresh_ttl` is never read
+rustray/src/app/reverse/mod.rs:403:5: warning: field `sessions` is never read
+rustray/src/tun/tun2socks.rs:421:5: warning: field `event_tx` is never read
+rustray/src/ffi/mobile.rs:14:7: warning: constant `IOS_POOL_CAPACITY` is never used
+rustray/src/ffi/mobile.rs:15:7: warning: constant `DEFAULT_BUFFER_SIZE` is never used
+rustray/src/types/parser.rs:53:5: warning: fields `v`, `aid`, `type_field`, and `tls` are never read
+warning: `rustray` (lib) generated 65 warnings (run `cargo fix --lib -p rustray` to apply 42 suggestions)
+    Checking edgeray-app v1.0.0 (/home/jrad/RustroverProjects/edgeray-workspace/edgeray-app)
+error: Failed to parse formatted segment: Expected Ident or Expression
+   --> edgeray-app/src/ui/mesh/identity_vault.rs:105:33
+    |
+105 | ...   "{if *key_visible.read() { \"Hide\" } else { \"Reveal\" }}"
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::components::ui::Icon`
+ --> edgeray-app/src/components/mesh_dashboard.rs:1:5
+  |
+1 | use crate::components::ui::Icon;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused imports: `AlertVariant`, `Alert`, and `Toggle`
+ --> edgeray-app/src/components/routing_manager.rs:6:5
+  |
+6 |     Alert, AlertVariant, Button, ButtonVariant, FormCard, Select, TextInput, Toggle,
+  |     ^^^^^  ^^^^^^^^^^^^                                                      ^^^^^^
+
+warning: unused import: `RuleAction`
+ --> edgeray-app/src/db/per_app_rules.rs:8:33
+  |
+8 | use crate::models::{PerAppRule, RuleAction};
+  |                                 ^^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+ --> edgeray-app/src/drivers/local_uniffi.rs:5:5
+  |
+5 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `ServerConfig`
+  --> edgeray-app/src/drivers/local_uniffi.rs:10:41
+   |
+10 | use rustray::types::{ConnectionMetrics, ServerConfig};
+   |                                         ^^^^^^^^^^^^
+
+warning: unused import: `ServerConfig`
+ --> edgeray-app/src/drivers/remote_actix.rs:8:41
+  |
+8 | use rustray::types::{ConnectionMetrics, ServerConfig};
+  |                                         ^^^^^^^^^^^^
+
+warning: unused import: `std::time::Duration`
+  --> edgeray-app/src/drivers/remote_actix.rs:11:5
+   |
+11 | use std::time::Duration;
+   |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+ --> edgeray-app/src/networking/dialer.rs:6:5
+  |
+6 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `tokio::sync::Mutex`
+ --> edgeray-app/src/networking/dialer.rs:7:5
+  |
+7 | use tokio::sync::Mutex;
+  |     ^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+  --> edgeray-app/src/networking/signaling.rs:18:5
+   |
+18 | use std::sync::Arc;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused import: `error`
+  --> edgeray-app/src/networking/signaling.rs:19:22
+   |
+19 | use tracing::{debug, error, info};
+   |                      ^^^^^
+
+warning: unused import: `std::net::ToSocketAddrs`
+   --> edgeray-app/src/services/provisioner.rs:365:13
+    |
+365 |         use std::net::ToSocketAddrs;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `ProbeConfig`
+  --> edgeray-app/src/services/auto_failover.rs:12:36
+   |
+12 | use crate::services::provisioner::{ProbeConfig, Pro...
+   |                                    ^^^^^^^^^^^
+
+warning: unused import: `Version`
+ --> edgeray-app/src/ui/components/qr_suite.rs:4:31
+  |
+4 | use fast_qr::{ECL, QRBuilder, Version};
+  |                               ^^^^^^^
+
+warning: unused import: `image::io::Reader as ImageReader`
+ --> edgeray-app/src/ui/components/qr_suite.rs:5:5
+  |
+5 | use image::io::Reader as ImageReader;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::io::Cursor`
+ --> edgeray-app/src/ui/components/qr_suite.rs:7:5
+  |
+7 | use std::io::Cursor;
+  |     ^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::components::ui::Icon`
+ --> edgeray-app/src/ui/mesh/identity_vault.rs:2:5
+  |
+2 | use crate::components::ui::Icon;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: use of deprecated type alias `image::io::Reader`: this type has been moved and renamed to image::ImageReader
+ --> edgeray-app/src/ui/components/qr_suite.rs:5:16
+  |
+5 | use image::io::Reader as ImageReader;
+  |                ^^^^^^
+  |
+  = note: `#[warn(deprecated)]` on by default
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/networking/signaling.rs:135:14
+    |
+135 | ...   let (mut client, mut _connection) = rumqttc:...
+    |            ----^^^^^^
+    |            |
+    |            help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+error[E0782]: expected a type, found a trait
+   --> edgeray-app/src/ui/components/qr_suite.rs:294:15
+    |
+294 |     let svg = Builder::default()
+    |               ^^^^^^^
+    |
+help: you can add the `dyn` keyword if you want a trait object
+    |
+294 |     let svg = <dyn Builder>::default()
+    |               ++++        +
+
+warning: unused variable: `orb_gradient`
+   --> edgeray-app/src/components/connect_button.rs:109:25
+    |
+109 | ...ring_gradient, orb_gradient, shadow_color, svg_stro...
+    |                   ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_orb_gradient`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `connected`
+  --> edgeray-app/src/components/dashboard.rs:74:9
+   |
+74 |     let connected = props.connection_state == Connectio...
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_connected`
+
+warning: unused variable: `connecting`
+  --> edgeray-app/src/components/dashboard.rs:75:9
+   |
+75 |     let connecting = props.connection_state == Connecti...
+   |         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_connecting`
+
+warning: unused variable: `protocol_text`
+   --> edgeray-app/src/components/import_view.rs:307:10
+    |
+307 |     let (protocol_text, variant) = match config.protoc...
+    |          ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_protocol_text`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:112:9
+    |
+112 |     let mut remarks = use_signal(|| {
+    |         ----^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:118:9
+    |
+118 |     let mut address = use_signal(|| {
+    |         ----^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:124:9
+    |
+124 |     let mut port = use_signal(|| existing.as_ref().map...
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:125:9
+    |
+125 |     let mut uuid = use_signal(|| {
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:131:9
+    |
+131 |     let mut flow = use_signal(|| {
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:137:9
+    |
+137 |     let mut network = use_signal(|| {
+    |         ----^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:143:9
+    |
+143 |     let mut security = use_signal(|| {
+    |         ----^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:151:9
+    |
+151 |     let mut sni = use_signal(|| {
+    |         ----^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:157:9
+    |
+157 |     let mut fingerprint = use_signal(|| {
+    |         ----^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:165:9
+    |
+165 |     let mut pbk = use_signal(|| {
+    |         ----^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:171:9
+    |
+171 |     let mut sid = use_signal(|| {
+    |         ----^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:371:9
+    |
+371 |     let mut remarks = use_signal(|| {
+    |         ----^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:377:9
+    |
+377 |     let mut address = use_signal(|| {
+    |         ----^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:383:9
+    |
+383 |     let mut port = use_signal(|| existing.as_ref().map...
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:384:9
+    |
+384 |     let mut password = use_signal(|| {
+    |         ----^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:390:9
+    |
+390 |     let mut method = use_signal(|| {
+    |         ----^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:497:9
+    |
+497 |     let mut remarks = use_signal(|| {
+    |         ----^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:503:9
+    |
+503 |     let mut address = use_signal(|| {
+    |         ----^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:509:9
+    |
+509 |     let mut port = use_signal(|| existing.as_ref().map...
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:510:9
+    |
+510 |     let mut uuid = use_signal(|| {
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:518:9
+    |
+518 |     let mut mode = use_signal(|| "auto".to_string());
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:519:9
+    |
+519 |     let mut enable_fec = use_signal(|| false);
+    |         ----^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/protocol_forms.rs:520:9
+    |
+520 |     let mut enable_stealth = use_signal(|| true);
+    |         ----^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> edgeray-app/src/components/routing_manager.rs:50:9
+   |
+50 |     let mut rules = use_signal(|| props.rules.clone());
+   |         ----^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> edgeray-app/src/components/routing_manager.rs:55:9
+   |
+55 |     let mut domain_strategy = use_signal(|| "AsIs".to_s...
+   |         ----^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/routing_manager.rs:408:9
+    |
+408 |     let mut name = use_signal(|| {
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/components/routing_manager.rs:426:9
+    |
+426 |     let mut outbound = use_signal(|| {
+    |         ----^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: unused variable: `available_servers`
+  --> edgeray-app/src/components/server_list.rs:32:9
+   |
+32 |     let available_servers = props
+   |         ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_available_servers`
+
+warning: variable does not need to be mutable
+  --> edgeray-app/src/components/settings_screen.rs:41:9
+   |
+41 |     let mut rustray_ver = use_signal(|| "v0.1.0".to_str...
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: unreachable pattern
+   --> edgeray-app/src/components/ui.rs:121:9
+    |
+ 78 | ...   "dashboard" => Some(
+    |       ----------- matches all the relevant values
+...
+121 | ...   "dashboard" => Some(include_str!("../../assets/i...
+    |       ^^^^^^^^^^^ no value can reach this
+    |
+    = note: `#[warn(unreachable_patterns)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `engine`
+   --> edgeray-app/src/drivers/local_uniffi.rs:148:13
+    |
+148 |         let engine = rustray::ffi::EngineManager::new();
+    |             ^^^^^^ help: if this is intentional, prefix it with an underscore: `_engine`
+
+warning: unused variable: `monitor`
+   --> edgeray-app/src/networking/dialer.rs:247:58
+    |
+247 | ...c<ServerConfig>, monitor: &ConnectionMonitor) -> Ve...
+    |                     ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_monitor`
+
+warning: unused variable: `start`
+   --> edgeray-app/src/services/provisioner.rs:221:13
+    |
+221 |         let start = Instant::now();
+    |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_start`
+
+warning: unused variable: `probe_start`
+   --> edgeray-app/src/services/provisioner.rs:226:17
+    |
+226 |             let probe_start = Instant::now();
+    |                 ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_probe_start`
+
+warning: unused variable: `start`
+   --> edgeray-app/src/services/provisioner.rs:298:13
+    |
+298 |         let start = Instant::now();
+    |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_start`
+
+warning: unused variable: `start`
+   --> edgeray-app/src/services/provisioner.rs:323:13
+    |
+323 |         let start = Instant::now();
+    |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_start`
+
+warning: unused variable: `start`
+   --> edgeray-app/src/services/provisioner.rs:337:13
+    |
+337 |         let start = Instant::now();
+    |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_start`
+
+warning: unused variable: `start`
+   --> edgeray-app/src/services/provisioner.rs:350:13
+    |
+350 |         let start = Instant::now();
+    |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_start`
+
+warning: unused variable: `carrier_to_probe`
+   --> edgeray-app/src/services/auto_failover.rs:109:13
+    |
+109 |         let carrier_to_probe = current_carrier.unwrap_...
+    |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_carrier_to_probe`
+
+warning: variable does not need to be mutable
+  --> edgeray-app/src/ui/components/qr_suite.rs:22:9
+   |
+22 |     let mut error_msg = use_signal(|| None::<String>);
+   |         ----^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: unused variable: `evt`
+  --> edgeray-app/src/ui/components/qr_suite.rs:24:32
+   |
+24 |     let on_file_upload = move |evt: FormEvent| {
+   |                                ^^^ help: if this is intentional, prefix it with an underscore: `_evt`
+
+warning: unused variable: `on_file_upload`
+  --> edgeray-app/src/ui/components/qr_suite.rs:24:9
+   |
+24 |     let on_file_upload = move |evt: FormEvent| {
+   |         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_on_file_upload`
+
+warning: variable does not need to be mutable
+  --> edgeray-app/src/ui/diagnostics/stack_monitor.rs:11:9
+   |
+11 |     let mut driver = crate::services::provisioner::use_...
+   |         ----^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: unused variable: `packet_loss`
+  --> edgeray-app/src/ui/diagnostics/stack_monitor.rs:23:9
+   |
+23 |     let packet_loss = 0.02; // Still mock for now as it...
+   |         ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_packet_loss`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/ui/mesh/peer_topology.rs:213:9
+    |
+213 |     let mut nodes = use_signal(|| {
+    |         ----^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> edgeray-app/src/ui/pages/setup_page.rs:138:9
+    |
+138 |     let mut custom_mtu = use_signal(|| String::new());
+    |         ----^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+ --> edgeray-app/src/ui/settings/advanced_tuning.rs:7:9
+  |
+7 |     let mut fec_shards = use_signal(|| "10".to_string());
+  |         ----^^^^^^^^^^
+  |         |
+  |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+ --> edgeray-app/src/ui/settings/advanced_tuning.rs:8:9
+  |
+8 |     let mut fec_parities = use_signal(|| "3".to_string());
+  |         ----^^^^^^^^^^^^
+  |         |
+  |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+ --> edgeray-app/src/ui/settings/advanced_tuning.rs:9:9
+  |
+9 |     let mut mqtt_heartbeat = use_signal(|| "30".to_strin...
+  |         ----^^^^^^^^^^^^^^
+  |         |
+  |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> edgeray-app/src/ui/settings/advanced_tuning.rs:10:9
+   |
+10 |     let mut fingerprint_interval = use_signal(|| "3600"...
+   |         ----^^^^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> edgeray-app/src/ui/settings/advanced_tuning.rs:13:9
+   |
+13 |     let mut fakedns_pool = use_signal(|| "198.18.0.0/16...
+   |         ----^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> edgeray-app/src/ui/settings/advanced_tuning.rs:14:9
+   |
+14 |     let mut fakedns_size = use_signal(|| "65536".to_str...
+   |         ----^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> edgeray-app/src/ui/settings/advanced_tuning.rs:15:9
+   |
+15 |     let mut fakedns_max = use_signal(|| "65535".to_stri...
+   |         ----^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: unused variable: `kill_switch`
+  --> edgeray-app/src/app/watchdog.rs:27:13
+   |
+27 |         let kill_switch = self.kill_switch_active.clone();
+   |             ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_kill_switch`
+
+For more information about this error, try `rustc --explain E0782`.
+warning: `edgeray-app` (lib) generated 77 warnings
+error: could not compile `edgeray-app` (lib) due to 2 previous errors; 77 warnings emitted

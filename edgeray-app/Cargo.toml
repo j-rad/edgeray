@@ -1,0 +1,81 @@
+[package]
+name = "edgeray-app"
+version = "1.0.0"
+edition = "2024"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+surrealdb = { version = "2.0.0-beta.2", default-features = false, features = ["kv-surrealkv", "kv-mem"] }
+dirs = "5.0"
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.12.26", default-features = false, features = ["json", "rustls-tls"] }
+
+rustray = { path = "../rustray", default-features = false, features = ["minimal-server", "tonic", "prost", "surrealdb", "actix-web-tonic"] }
+
+[target.'cfg(any(target_os = "android", target_os = "ios"))'.dependencies]
+dioxus = { version = "0.7.2", features = ["mobile"] }
+jni = "0.21"
+
+
+[target.'cfg(not(any(target_arch = "wasm32", target_os = "android", target_os = "ios")))'.dependencies]
+dioxus = { version = "0.7.2", features = ["desktop"] }
+libc = "0.2"
+arboard = "3.6.1"
+open = "5"
+# Tungstenite is only needed for desktop live-reload/websocket if used directly, or to fix the override we added
+tungstenite = { version = "0.27", default-features = false, features = ["rustls-tls-native-roots"] }
+
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+dioxus = { version = "0.7.2", features = ["web"] }
+web-sys = { version = "0.3", features = ["console", "Window", "Document", "Navigator", "History", "PopStateEvent", "Touch", "TouchList", "TouchEvent"] }
+wasm-bindgen = "0.2"
+gloo-timers = "0.3"
+reqwest = { version = "0.12.26", default-features = false, features = ["json"] } # WASM feature set
+tokio = { version = "1", features = ["sync", "macros"] }
+
+[dependencies]
+dioxus-logger = "0.7.2"
+
+
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+futures = "0.3"
+log = "0.4"
+base64 = "0.22.1"
+anyhow = "1.0.100"
+url = "2.5.7"
+tracing = "0.1.43"
+async-trait = "0.1"
+thiserror = "2.0"
+once_cell = "1.21.3"
+serde_yaml = "0.9"
+chrono = "0.4"
+qrcodegen = "1.8"
+rxing = "0.8"
+uuid = { version = "1.20.0", features = ["v4", "serde", "js"] }
+# For invoking Tauri commands from webview
+getrandom = { version = "0.2", features = ["js"] }
+getrandom_03 = { package = "getrandom", version = "0.3", features = ["wasm_js"] }
+tauri-sys = { git = "https://github.com/JonasKruckenberg/tauri-sys", branch = "v2", features = ["core"], optional = true }
+wasm-bindgen = { version = "0.2", optional = true }
+wasm-bindgen-futures = { version = "0.4", optional = true }
+percent-encoding = "2.3.2"
+reqwest = { version = "0.12.26", features = ["json", "rustls-tls"] }
+rust-embed = { version = "8.5", features = ["interpolate-folder-path"] }
+fast_qr = { version = "0.10.1", features = ["svg"] }
+rqrr = "0.7.0"
+maxminddb = "0.23.0"
+image = "0.25.0"
+chacha20poly1305 = "0.10"
+hex = "0.4"
+rand = "0.8.5"
+rumqttc = "0.25.1"
+
+[features]
+default = []
+web = ["wasm-bindgen", "wasm-bindgen-futures", "tauri-sys"]
+tauri = ["tauri-sys"]
+
+[dev-dependencies]
+walkdir = "2"
