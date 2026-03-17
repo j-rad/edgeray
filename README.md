@@ -4,7 +4,7 @@ EdgeRay is a cross-platform client built with Rust, Tauri, Dioxus, and a custom 
 
 ## Project Structure
 
-- **edgeray-core**: The headless engine (Rust). Handles TUN device, TCP/IP stack (smoltcp), and proxying.
+- **rustray-core**: The headless engine (Rust). Handles TUN device, TCP/IP stack (smoltcp), and proxying.
 - **edgeray-app**: The UI client (Tauri + Dioxus).
 - **shared-types**: Shared data structures between core and app.
 - **gen**: Generated native code for Android/iOS.
