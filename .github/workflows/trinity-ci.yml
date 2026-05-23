@@ -1,0 +1,70 @@
+name: Trinity Stack Hardened CI/CD
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+env:
+  CARGO_TERM_COLOR: always
+  PROTOC_NO_VENDOR: 1 
+
+jobs:
+  build_core:
+    name: Build Rustray Super-Core
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            protobuf-compiler \
+            libprotobuf-dev \
+            libelf-dev \
+            clang \
+            llvm \
+            pkg-config \
+            libssl-dev \
+            nftables
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+          targets: wasm32-unknown-unknown
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build Core (All Features)
+        # Verifies compilation for the entire evasion matrix
+        run: cargo build --verbose --features "ebpf quic masque cdn_loop stego shaping"
+
+      - name: Run Core Logic Tests
+        run: cargo test --verbose --lib --bins
+
+  build_frontend:
+    name: Build Hardened WASM Frontends
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install wasm-pack & binaryen
+        run: |
+          curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+          sudo apt-get install -y binaryen
+
+      - name: Build RR-UI (Optimized)
+        run: |
+          cd rr-ui
+          wasm-pack build --target web --release
+          # HARDENING: Strip debug symbols and optimize for 0% JS mandate
+          wasm-opt -O4 -o pkg/rr_ui_optimized.wasm pkg/rr_ui_bg.wasm
+
+      - name: Build EdgeRay (Optimized)
+        run: |
+          cd edgeray-app
+          wasm-pack build --target web --release

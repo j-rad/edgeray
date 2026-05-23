@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#020617" />
+    
+    <!-- iOS PWA Capable -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="EdgeRay" />
+    
+    <title>EdgeRay Pro</title>
+    <!-- Fonts loaded locally from vendor/ — no external network requests -->
+    <!-- Tailwind CSS pre-compiled — no CDN dependency -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              background: '#020617',
+              surface: '#0f172a',
+              primary: {
+                DEFAULT: '#22d3ee',
+                dim: 'rgba(34, 211, 238, 0.1)',
+                glow: 'rgba(34, 211, 238, 0.5)',
+              },
+              purple: {
+                DEFAULT: '#bc00ff',
+                dim: 'rgba(188, 0, 255, 0.1)',
+                glow: 'rgba(188, 0, 255, 0.5)',
+              },
+              emerald: {
+                DEFAULT: '#00ffa3',
+                dim: 'rgba(0, 255, 163, 0.1)',
+                glow: 'rgba(0, 255, 163, 0.5)',
+              },
+              warning: {
+                DEFAULT: '#d4ff00',
+                dim: 'rgba(212, 255, 0, 0.1)',
+              }
+            },
+            animation: {
+              'spin-slow': 'spin 8s linear infinite',
+              'spin-slower': 'spin 15s linear infinite',
+              'spin-reverse-slow': 'spin-reverse 12s linear infinite',
+              'fade-in': 'fadeIn 0.5s ease-out',
+              'slide-up': 'slideUp 0.5s ease-out',
+              'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'blob': 'blob 10s infinite',
+            },
+            keyframes: {
+              'spin-reverse': {
+                'from': { transform: 'rotate(360deg)' },
+                'to': { transform: 'rotate(0deg)' },
+              },
+              fadeIn: {
+                'from': { opacity: '0' },
+                'to': { opacity: '1' },
+              },
+              slideUp: {
+                'from': { transform: 'translateY(20px)', opacity: '0' },
+                'to': { transform: 'translateY(0)', opacity: '1' },
+              },
+              blob: {
+                '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <link rel="stylesheet" href="assets/index.css" />
+  </head>
+  <body class="bg-background text-white antialiased overflow-x-hidden selection:bg-primary selection:text-black">
+    <div id="main"></div>
+  </body>
+</html>

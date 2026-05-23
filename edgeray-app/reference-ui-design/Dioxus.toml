@@ -1,0 +1,17 @@
+[application]
+name = "edgeray-dioxus"
+default_platform = "web"
+
+[web.app]
+title = "EdgeRay Pro"
+base_path = "/"
+
+[web.watcher]
+reload_html = true
+watch_path = ["src", "assets"]
+
+[web.resource]
+style = ["assets/index.css"]
+
+[web.resource.dev]
+style = ["assets/index.css"]

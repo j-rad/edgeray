@@ -1,0 +1,18 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/FaezBarghasa/rutls-workspace"]
+git = "https://github.com/FaezBarghasa/rutls-workspace"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/JonasKruckenberg/tauri-sys?branch=v2"]
+git = "https://github.com/JonasKruckenberg/tauri-sys"
+branch = "v2"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/cloudflare/boringtun"]
+git = "https://github.com/cloudflare/boringtun"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
