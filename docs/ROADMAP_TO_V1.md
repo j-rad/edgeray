@@ -19,7 +19,7 @@ The goal is to move beyond the experimental phase and ensure the core daemon is 
 
 Before Production, the application must reach a high performance benchmark.
 
-* **IO_uring Migration**: On modern Linux (Phase 9 goal), migrate `rustray` to use `tokio-uring` to reduce context-switching cost.
+* **IO_uring Migration**: On modern Linux, migrate `rustray` to use `tokio-uring` to reduce context-switching cost.
 * **Automated Benchmarking**: Implement a CI pipeline that automatically benchmarks each commit and rejects performance regressions.
 * **Simulated DPI Stress Testing**: Maintain a test suite of simulated DPI environments (GFW/MCI mimicry) and ensure 99% reliability across all circumvention methods.
 * **Elastic FEC Auto-Tuning**: Develop an algorithm that detects localized packet loss and automatically adjusts the Forward Error Correction parity shards.

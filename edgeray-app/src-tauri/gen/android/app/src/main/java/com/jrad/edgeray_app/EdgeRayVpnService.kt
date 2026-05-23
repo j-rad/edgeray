@@ -280,11 +280,15 @@ class EdgeRayVpnService : VpnService() {
     
     private fun startStatsPolling() {
         statsThreadRunning.set(true)
+        var failureCount = 0
         statsUpdateThread = Thread {
             while (statsThreadRunning.get()) {
                 try {
                     // Fetch metrics from Rust
                     val metricsJson = nativeGetMetricsJson()
+                    if (metricsJson.isEmpty() || metricsJson == "null") {
+                        throw RuntimeException("Rust engine returned empty metrics")
+                    }
                     val metrics = JSONObject(metricsJson)
                     
                     val bytesUp = metrics.optLong("bytes_uploaded", 0)
@@ -301,12 +305,35 @@ class EdgeRayVpnService : VpnService() {
                         statsBuffer.putLong(state)
                     }
                     
-                    // Sleep for 1 second
-                    Thread.sleep(1000)
+                    failureCount = 0
+                    // Sleep for 500ms to detect failures quickly
+                    Thread.sleep(500)
                 } catch (e: InterruptedException) {
                     break
                 } catch (e: Exception) {
-                    Log.w(TAG, "Stats polling error: ${e.message}")
+                    Log.w(TAG, "Stats polling error (Rust process dead?): ${e.message}")
+                    failureCount++
+                    if (failureCount >= 1) {
+                        Log.e(TAG, "Rust process disappeared! Restarting VPN within 500ms...")
+                        
+                        try { nativeStopVpn() } catch (ignored: Exception) {}
+                        
+                        val lastConfig = loadLastConfig() ?: "{}"
+                        isRunning.set(false)
+                        
+                        // Auto-restart within 500ms
+                        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+                            if (!isRunning.get()) {
+                                try {
+                                    startVpnConnection(lastConfig)
+                                } catch (reconnectEx: Exception) {
+                                    Log.e(TAG, "Failed to auto-restart: ${reconnectEx.message}")
+                                }
+                            }
+                        }, 100)
+                        break
+                    }
+                    try { Thread.sleep(100) } catch (ignored: InterruptedException) { break }
                 }
             }
         }.apply {
@@ -395,7 +422,7 @@ class EdgeRayVpnService : VpnService() {
             .setContentText(status)
             .setOngoing(true)
             .setContentIntent(openAppPendingIntent)
-            .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Disconnect", disconnectPendingIntent)
+            .addAction(android.R.drawable.ic_menu_close_clear_cancel, "STOP", disconnectPendingIntent)
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .build()
     }

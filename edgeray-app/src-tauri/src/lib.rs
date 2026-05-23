@@ -486,6 +486,7 @@ async fn get_connection_stats() -> Result<(u64, u64), String> {
 }
 
 #[derive(Serialize)]
+#[allow(dead_code)]
 struct AppInfo {
     package_name: String,
     app_name: String,

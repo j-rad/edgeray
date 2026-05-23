@@ -2,273 +2,166 @@
 
 > High-Performance Cross-Platform VPN Client with Rust Core
 
+**Status:** The Phase 7 Evasion & Transport Orchestration Architecture is **100% Finalized** and compile-safe.
+
 ## Overview
 
-EdgeRay is a modern VPN client implementing multiple proxy protocols with a focus on performance, security, and cross-platform compatibility. The architecture follows a layered design with a pure-Rust core that abstracts platform-specific concerns.
+EdgeRay is a modern VPN ecosystem implementing the most advanced anti-censorship protocols with a focus on extreme performance, resilience (via FEC and multipathing), and cross-platform compatibility. The system is split cleanly between the headless `rustray` engine, the `edgeray-app` desktop client, `rr-ui` server/management panel and `rustray-lite` for embedded systems.
 
 ## System Context
 
 ```mermaid
 graph TD
-    subgraph "User Interface"
-        WEB[Dioxus Web/Desktop UI]
-        MOBILE[Mobile UI - Flutter/Native]
+    subgraph "User Interface Frameworks"
+        WEB[rr-ui Svelte/Actix Web Server]
+        GUI[EdgeRay Desktop Dioxus/Tauri]
     end
-    
-    subgraph "Application Layer"
-        TAURI[Tauri Runtime]
-        UNIFFI[UniFFI Bindings]
+
+    subgraph "Core Daemon - rustray"
+        ROUTER[Traffic Router / GeoIP Engine]
+        ORCHESTRATE[Fallback Orchestrator]
+        PROTOCOLS[VLESS, VMess, Flow-J, SIP003, P2P]
+        TRANSPORT[Brutal-QUIC, REALITY, WS, gRPC UDS]
+        VPN[smoltcp IPv4/IPv6 Stack]
+        EBPF[aya eBPF Handshake Mutilator]
     end
-    
-    subgraph "Core Engine - rustray"
-        ROUTER[Router - Geo/Domain Matching]
-        PROTOCOLS[Protocol Suite]
-        TRANSPORT[Transport Layer]
-        VPN[VPN Stack - tun2socks]
+
+    subgraph "Embedded Daemon - rustray-lite"
+        ROUTER_LITE[Traffic Router]
+        PROTOCOLS_LITE[VLESS, VMess, Flow-J]
+        TRANSPORT_LITE[WS, gRPC]
+        VPN_LITE[smoltcp IPv4/IPv6 Stack]
     end
-    
-    subgraph "Platform Layer"
-        TUN[tun-rs - TUN Device]
-        SMOLTCP[smoltcp - TCP/IP Stack]
-        OS[OS Network Stack]
+
+    subgraph "OS Abstraction Layer"
+        TUN[tun-rs Interface]
+        KERNEL[OS Network Interfaces]
     end
-    
-    WEB --> TAURI
-    MOBILE --> UNIFFI
-    TAURI --> ROUTER
-    UNIFFI --> ROUTER
-    ROUTER --> PROTOCOLS
+
+    WEB --> ROUTER
+    GUI --> ROUTER
+    ROUTER --> ORCHESTRATE
+    ORCHESTRATE --> PROTOCOLS
     PROTOCOLS --> TRANSPORT
+    TRANSPORT --> VPN
+    VPN -.-> EBPF
     VPN --> TUN
-    TUN --> OS
-    VPN --> SMOLTCP
+    EBPF --> KERNEL
+    TUN --> KERNEL
+    ROUTER_LITE --> PROTOCOLS_LITE
+    PROTOCOLS_LITE --> TRANSPORT_LITE
+    TRANSPORT_LITE --> VPN_LITE
+    VPN_LITE --> TUN
 ```
 
 ## Core Components
 
 ### rustray (Rust Core Library)
 
-The core library provides all proxy functionality in pure Rust:
+The core library provides zero-allocation payload forwarding using `tokio` and `bytes` in pure Rust:
 
 | Component | Location | Purpose |
 |-----------|----------|---------|
-| Protocols | `src/protocols/` | VMess, VLESS, Trojan, Hysteria2, WireGuard, Shadowsocks |
-| Transport | `src/transport/` | TLS, REALITY, ECH, WebSocket, gRPC, QUIC, SplitHTTP |
+| Protocols | `src/protocols/` | VMess, VLESS, Trojan, Flow-J, Shadowsocks, SIP003 |
+| Transport | `src/transport/` | Brutal-QUIC, REALITY, P2P Relay BLAKE3, RelayFronting, WebSocket, gRPC, ECH |
+| Orchestrator | `src/orchestrator/` | Active probe failure detection and path hot-swapping |
 | Router | `src/router.rs` | GeoIP/GeoSite matching, domain-based routing |
-| VPN Stack | `src/tun/` | tun-rs device, smoltcp TCP/IP stack, Tun2Socks engine |
-| API | `src/api/` | gRPC service for control plane |
+| VPN Stack | `src/tun/` | tun-rs device, smoltcp userspace TCP/IP stack with legacy mimicry |
+| Traffic Shaping | `src/transport/behavior_synth.rs` | Markov-chain protocol mimicry (Modbus, MQTT, HTTPS) |
+| MITM Core | `src/transport/mitm.rs` | Transparent TLS termination and on-the-fly certificate generation |
+| Kernel Hooks | `src/ebpf/` | aya-based map loaders for TLS ClientHello packet slicing |
+| API | `src/api/` | Self-healing UDS manager for local metrics aggregation |
 
-### Protocol Suite
+### edgeray-app (Desktop Client)
+The `edgeray-app` crate is the consumer-facing Graphical User Interface (GUI) and desktop systems integration for the EdgeRay ecosystem. It unites the extreme speed of the `rustray` network daemon with a highly optimized, universally portable window manager.
+
+### rr-ui (Web UI)
+Web-based panel and data models for managing EdgeRay and Xray-compatible cores on remote servers.
+
+### rustray-lite (Embedded)
+A lightweight version of the `rustray` core, designed for embedded systems with limited resources.
+
+### Protocol & Transport Suite
 
 ```mermaid
 graph LR
     subgraph "Proxy Protocols"
         VMESS[VMess AEAD]
         VLESS[VLESS + Vision]
-        TROJAN[Trojan]
-        HY2[Hysteria2 BBR]
-        WG[WireGuard]
+        FLOWJ[Flow-J Universal]
+        SIP003[SIP003 Plugin]
         SS[Shadowsocks 2022]
+        P2P[Asymmetric P2P Relay]
     end
-    
-    subgraph "Transport Security"
-        TLS[TLS 1.3]
+
+    subgraph "Transport Envelopes"
+        TLS[TLS 1.3 Mimic]
         REALITY[REALITY]
-        ECH[ECH]
-        PQC[PQC - ML-KEM]
+        ECH[ECH Decoy]
+        MQTT[IoT Steganography]
+        MITM[MITM Interceptor]
     end
-    
-    subgraph "Stream Transports"
-        TCP[TCP]
-        WS[WebSocket]
-        GRPC[gRPC]
-        QUIC[QUIC/H3]
-        XHTTP[SplitHTTP/xhttp]
+
+    subgraph "Stream Layers"
+        TCP[Legacy TCP]
+        WS[CDN WebSocket]
+        QUIC[Brutal-QUIC]
+        XHTTP[SplitHTTP / HTTP Upgrade]
+        RELAYFRONT[Relay Domain Fronting]
     end
-    
-    VMESS --> TLS
+
     VLESS --> REALITY
-    VLESS --> TLS
-    TROJAN --> TLS
-    HY2 --> QUIC
-    
+    FLOWJ --> REALITY
+    FLOWJ --> MQTT
+    FLOWJ --> XHTTP
+    FLOWJ --> MITM
+    P2P --> QUIC
+    SIP003 --> TCP
+
     TLS --> TCP
     TLS --> WS
     REALITY --> TCP
     ECH --> TLS
+    MQTT --> TCP
+    XHTTP --> TCP
+    RELAYFRONT --> TCP
 ```
 
-## Packet Lifecycle
+## MTU Profiles & Elastic FEC
 
-The complete path of a packet through the VPN stack:
+EdgeRay features full support for MTU optimization and uses Reed-Solomon per-stream Forward Error Correction (FEC).
 
-```mermaid
-sequenceDiagram
-    participant App as Application
-    participant OS as OS Network Stack
-    participant TUN as TUN Device (tun-rs)
-    participant SMOL as smoltcp TCP/IP
-    participant T2S as Tun2Socks Engine
-    participant ROUTER as Router
-    participant PROTO as Protocol Handler
-    participant REMOTE as Remote Server
+| Profile | MTU | Parity Shards (FEC) | Use Case |
+|---------|-----|----------------------|----------|
+| Cellular | 1400 | Data: 10, Parity: 5 | Extremely lossy 3G/LTE towers |
+| Standard | 1500 | Data: 10, Parity: 2 | Standard Broadband |
+| Jumbo | 9000 | Data: 10, Parity: 0 | Perfect line Gigabit Datacenters |
 
-    App->>OS: TCP/UDP Socket Call
-    OS->>TUN: IP Packet (via routing table)
-    TUN->>SMOL: Raw IP Packet
-    
-    Note over SMOL: Userspace TCP/IP Processing
-    SMOL->>T2S: TCP Stream / UDP Datagram
-    
-    T2S->>ROUTER: Extract destination (host:port)
-    ROUTER->>ROUTER: GeoIP/GeoSite Matching
-    
-    alt Direct Connection
-        ROUTER->>OS: Bypass to OS Stack
-    else Proxy Route
-        ROUTER->>PROTO: Select Outbound
-        PROTO->>PROTO: Protocol Encapsulation
-        PROTO->>REMOTE: Encrypted Tunnel
-    end
-    
-    REMOTE-->>PROTO: Response
-    PROTO-->>T2S: Decapsulated Data
-    T2S-->>SMOL: TCP ACK / UDP Response
-    SMOL-->>TUN: IP Packet
-    TUN-->>OS: Inject to Network
-    OS-->>App: Socket Response
-```
+## The Fallback Orchestrator
 
-## VLESS REALITY Handshake
+The Orchestrator actively probes the active protocol (like `Flow-J`). If the health checker detects persistent threshold timeouts (indicating BGP throttling or DPI blocking):
 
-Detailed handshake sequence for VLESS with REALITY transport:
+1. Connections instantly lock.
+2. The core shifts to the next array tag (e.g., `backup-p2p`).
+3. Connection resumes seamlessly with the new encapsulation.
+4. Old sessions are gracefully culled.
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant S as REALITY Server
-    participant D as Decoy Server
+## Cross-Platform Availability
 
-    Note over C: Generate X25519 Ephemeral Keypair
-    Note over C: Embed public key in Client Hello
-    
-    C->>S: TLS ClientHello (mimics browser fingerprint)
-    
-    Note over S: Extract ephemeral public key
-    Note over S: Validate Short ID
-    
-    alt Valid REALITY Auth
-        Note over S: Derive shared secret
-        S->>C: TLS ServerHello (with REALITY params)
-        Note over C,S: ECDH Key Exchange Complete
-        
-        C->>S: Encrypted VLESS Request
-        S->>C: Encrypted VLESS Response
-        
-        Note over C,S: Bi-directional encrypted tunnel
-    else Invalid Auth
-        Note over S: Forward to decoy
-        S->>D: Proxy ClientHello
-        D->>S: Real TLS Response
-        S->>C: Decoy Response
-        Note over C: Connection appears as normal HTTPS
-    end
-```
-
-## MTU Profiles
-
-The VPN stack supports multiple MTU profiles for different network environments:
-
-| Profile | MTU | MSS (IPv4) | MSS (IPv6) | Use Case |
-|---------|-----|------------|------------|----------|
-| Cellular | 1400 | 1360 | 1340 | Mobile networks with overhead |
-| Standard | 1500 | 1460 | 1440 | Normal ethernet |
-| Jumbo | 9000 | 8960 | 8940 | High-performance LAN/DC |
-
-### MSS Clamping
-
-TCP MSS is dynamically clamped in SYN packets to prevent fragmentation:
-
-```
-MSS = MTU - IP_Header - TCP_Header
-IPv4: MSS = MTU - 20 - 20
-IPv6: MSS = MTU - 40 - 20
-```
-
-## Kill-Switch Implementation
-
-Zero-leak protection is implemented via atomic flag:
-
-```mermaid
-stateDiagram-v2
-    [*] --> Healthy: Core Started
-    Healthy --> Unhealthy: Error/Disconnect
-    Unhealthy --> Healthy: Reconnected
-    
-    state Healthy {
-        [*] --> Processing
-        Processing --> Processing: Forward Packets
-    }
-    
-    state Unhealthy {
-        [*] --> Dropping
-        Dropping --> Dropping: Drop All Packets
-    }
-```
-
-When `CORE_HEALTHY` is `false`:
-
-- All outgoing packets are silently dropped
-- No traffic leaks to the direct network
-- System routes remain in place
-- Reconnection attempts continue
-
-## Cross-Platform Support
-
-| Platform | UI Framework | Core Binding | TUN Implementation |
+| Platform | UI Framework | Core Binding | Kernel Execution |
 |----------|--------------|--------------|-------------------|
-| Linux | Dioxus (Tauri) | Native | tun-rs |
+| Linux | Dioxus (Tauri) | Native | aya / eBPF / tun-rs |
 | macOS | Dioxus (Tauri) | Native | tun-rs (utun) |
 | Windows | Dioxus (Tauri) | Native | tun-rs (Wintun) |
-| Android | Kotlin/Compose | UniFFI | VpnService + tun |
-| iOS | Swift/SwiftUI | UniFFI | NetworkExtension |
+| Android | Kotlin | UniFFI | VpnService + tun |
+| iOS | Swift | UniFFI | NetworkExtension |
+| Embedded | N/A | Native | tun-rs |
 
-## Directory Structure
-
-```
-edgeray-workspace/
-├── rustray/                    # Core Rust library
-│   ├── src/
-│   │   ├── protocols/          # VMess, VLESS, Trojan, etc.
-│   │   ├── transport/          # TLS, REALITY, WebSocket, etc.
-│   │   ├── tun/                # TUN device and Tun2Socks
-│   │   ├── router.rs           # Routing engine
-│   │   └── api/                # gRPC control plane
-│   └── benches/                # Performance benchmarks
-├── edgeray-app/                # Desktop/Web UI (Dioxus + Tauri)
-│   ├── src/                    # Frontend components
-│   └── src-tauri/              # Tauri backend
-├── shared-types/               # Shared type definitions
-│   └── src/
-│       ├── lib.rs              # Protocol, ServerConfig
-│       └── parser.rs           # Link parsing/generation
-└── docs/
-    └── adr/                    # Architecture Decision Records
-```
-
-## Performance Characteristics
+## Memory Integrity & Performance
 
 | Metric | Target | Implementation |
 |--------|--------|----------------|
-| Packet Latency | < 0.5ms | Lock-free queues (crossbeam) |
-| Memory Allocation | Zero-copy | `bytes` crate, buffer pools |
-| Crypto | Hardware-accelerated | AES-NI, ARM NEON via ring |
-| Binary Size | < 15MB (mobile) | LTO, symbol stripping |
-
-## Security Model
-
-1. **Memory Safety**: Pure Rust core, no unsafe outside FFI boundaries
-2. **Traffic Obfuscation**: REALITY, ECH, TLS fingerprinting
-3. **Kill-Switch**: Atomic flag prevents leak during disconnect
-4. **Replay Protection**: Per-protocol LRU nonce caches
-5. **Post-Quantum Ready**: ML-KEM-768 hybrid key exchange support
+| Packet Latency | < 0.2ms | Lock-free queues (crossbeam), kernel splice() |
+| Memory Handling | Zero-copy | `bytes` crate, single-pass buffers |
+| Security | Quantum-Ready | ML-KEM-768 hybrid key exchange support |
+| Payload Resiliency| Invisible | Reed-Solomon mathematical matrix parity |

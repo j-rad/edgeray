@@ -1,5 +1,4 @@
-/* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+/* Fonts loaded locally from assets/vendor/ — no external network requests */
 
 /* ========================================
    DEEP NIGHT NEON THEME

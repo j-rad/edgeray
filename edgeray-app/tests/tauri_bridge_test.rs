@@ -1,12 +1,14 @@
 #[cfg(not(target_os = "android"))]
 #[cfg(test)]
 mod tests {
-    
+
     use rustray::ffi::EngineManager;
     use std::sync::Once;
 
+    #[allow(dead_code)]
     static INIT: Once = Once::new();
 
+    #[allow(dead_code)]
     fn setup() {
         INIT.call_once(|| {
             // Mock setup if needed

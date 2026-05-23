@@ -7,6 +7,12 @@ pub struct DesktopVpnService {
     running: AtomicBool,
 }
 
+impl Default for DesktopVpnService {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl DesktopVpnService {
     pub fn new() -> Self {
         Self {

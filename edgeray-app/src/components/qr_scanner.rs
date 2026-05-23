@@ -33,37 +33,8 @@ pub fn QrScanner(props: QrScannerProps) -> Element {
             // Since we don't have direct access to the plugin API in this snippet,
             // we'll simulate the call structure or use a JS eval bridge if needed.
 
-            // In a real Tauri v2 app with the barcode-scanner plugin:
-            // tauri::plugin::barcode_scanner::scan(...)
-
-            // For now, we'll use a JS eval to trigger the plugin if available,
-            // or fallback to a mock for development.
-
-            let script = r#"
-                // Check if window.__TAURI__ exists (Tauri environment)
-                if (window.__TAURI__) {
-                    const { invoke } = window.__TAURI__.core;
-                    // Attempt to call the plugin command
-                    // Note: The actual command depends on the plugin implementation
-                    invoke('plugin:barcode-scanner|scan', { windowed: true })
-                        .then(result => {
-                            dioxus.send({ type: "success", text: result.content });
-                        })
-                        .catch(err => {
-                            dioxus.send({ type: "error", text: err.toString() });
-                        });
-                } else {
-                    // Fallback for browser dev
-                    console.warn("Not in Tauri environment");
-                }
-            "#;
-
-            // We need a way to receive the result.
-            // Since `eval` in Dioxus is one-way or simple return, we might need a channel.
-            // However, for mobile, the native view usually takes over.
-
-            // Placeholder for actual mobile implementation:
             // In production, this would call the Rust command that opens the native camera view.
+            log::warn!("Native barcode scanner not implemented. Please use clipboard paste.");
         });
     });
 
@@ -85,48 +56,8 @@ pub fn QrScanner(props: QrScannerProps) -> Element {
             // This requires a backend command `scan_screen_qr` which we haven't implemented yet.
             // For now, we'll simulate or use the JS fallback.
 
-            // JS Fallback using html5-qrcode for webcam
-            let script = r#"
-                const ensureLib = () => {
-                    return new Promise((resolve) => {
-                        if (window.Html5Qrcode) return resolve();
-                        const script = document.createElement('script');
-                        script.src = "https://unpkg.com/html5-qrcode";
-                        script.onload = resolve;
-                        document.head.appendChild(script);
-                    });
-                };
-
-                ensureLib().then(() => {
-                    const html5QrCode = new Html5Qrcode("reader");
-                    const config = { fps: 10, qrbox: { width: 250, height: 250 } };
-
-                    html5QrCode.start(
-                        { facingMode: "environment" },
-                        config,
-                        (decodedText, decodedResult) => {
-                            dioxus.send({ type: "success", text: decodedText });
-                            html5QrCode.stop().then(() => html5QrCode.clear());
-                        },
-                        (errorMessage) => {}
-                    ).catch((err) => {
-                        dioxus.send({ type: "error", text: err.toString() });
-                    });
-                });
-            "#;
-
-            let mut eval = dioxus::document::eval(script);
-
-            while let Ok(msg) = eval.recv::<serde_json::Value>().await {
-                let msg_type = msg["type"].as_str().unwrap_or("");
-                if msg_type == "success" {
-                    if let Some(text) = msg["text"].as_str() {
-                        props.on_scan.call(text.to_string());
-                    }
-                } else if msg_type == "error" {
-                    error_msg.set(msg["text"].as_str().map(|s| s.to_string()));
-                }
-            }
+            // JS Fallback using html5-qrcode for webcam removed to adhere to 0% JS mandate.
+            log::warn!("Desktop webcam scanner not implemented. Please use clipboard paste.");
         });
     };
 

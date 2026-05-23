@@ -180,7 +180,9 @@ docs:
 build-wasm:
     @echo "📦 Building Wasm dashboard..."
     cd edgeray-app && dx build --release --platform web --package edgeray-app
-    @echo "✅ Wasm dashboard built"
+    @echo "🗜️ Compressing WASM with Brotli..."
+    cd rr-ui && cargo run --bin compress_wasm
+    @echo "✅ Wasm dashboard built and compressed"
 
 # Build Linux with embedded dashboard
 dist-linux: build-wasm

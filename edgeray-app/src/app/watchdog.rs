@@ -98,7 +98,7 @@ async fn ping_core() -> bool {
 
 async fn restart_core() {
     log::info!("Watchdog: Restarting Core Service...");
-    #[cfg(feature = "tauri")]
+    #[cfg(all(feature = "tauri", target_arch = "wasm32"))]
     {
         let _ = tauri_sys::core::invoke::<()>("restart_core", &serde_json::json!({})).await;
     }
@@ -106,7 +106,7 @@ async fn restart_core() {
 
 async fn set_os_kill_switch(enabled: bool) {
     log::info!("Watchdog: Setting OS Kill Switch to {}", enabled);
-    #[cfg(feature = "tauri")]
+    #[cfg(all(feature = "tauri", target_arch = "wasm32"))]
     {
         let _ = tauri_sys::core::invoke::<()>(
             "set_kill_switch",
@@ -148,12 +148,18 @@ async fn is_on_battery() -> bool {
     false
 }
 
+#[cfg(target_arch = "wasm32")]
+fn spawn_local<F>(future: F)
+where
+    F: std::future::Future<Output = ()> + 'static,
+{
+    wasm_bindgen_futures::spawn_local(future);
+}
+
+#[cfg(not(target_arch = "wasm32"))]
 fn spawn_local<F>(future: F)
 where
     F: std::future::Future<Output = ()> + Send + 'static,
 {
-    #[cfg(target_arch = "wasm32")]
-    wasm_bindgen_futures::spawn_local(future);
-    #[cfg(not(target_arch = "wasm32"))]
     tokio::spawn(future);
 }

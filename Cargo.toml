@@ -3,16 +3,18 @@ resolver = "2"
 members = [
     "rustray",
     "edgeray-app",
+    "rr-ui",
     "edgeray-app/src-tauri",
+    "edgeray-app/reference-ui-design",
 ]
 
 
 [workspace.package]
 version = "1.0.0"
 edition = "2024"
-authors = ["J-rad"]
+authors = ["j-rad"]
 license = "MIT"
-repository = "https://github.com/j.rad/edgeray"
+repository = "https://github.com/faezbarghasa/edgeray-workspace"
 
 [workspace.dependencies]
 # Unified dependency management to prevent version mismatches
@@ -20,11 +22,14 @@ tokio = { version = "1.36", features = ["full"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 async-trait = "0.1"
+tungstenite = { version = "0.27", default-features = false, features = ["handshake"] }
 bytes = "1.5"
 log = "0.4"
 thiserror = "1.0"
 anyhow = "1.0"
+openssl = { version = "0.10", features = ["vendored"] }
 uniffi = "0.25"
+surrealdb = { version = "2.1.0", default-features = false }
 rustray = { path = "./rustray" }
 
 
@@ -33,4 +38,80 @@ lto = true
 codegen-units = 1
 panic = "abort"
 strip = true
-opt-level = 3
+opt-level = "z"
+
+[workspace.lints.rust]
+dead_code = "allow"
+deprecated = "allow"
+non_snake_case = "allow"
+unused_variables = "allow"
+unused_mut = "allow"
+unused_imports = "allow"
+unexpected_cfgs = "allow"
+
+[workspace.lints.clippy]
+all = "allow"
+pedantic = "allow"
+nursery = "allow"
+cargo = "allow"
+# But specifically allow things that might still be errors if clippy::all is too much
+field_reassign_with_default = "allow"
+large_enum_variant = "allow"
+too_many_arguments = "allow"
+collapsible_if = "allow"
+collapsible_else_if = "allow"
+type_complexity = "allow"
+derivable_impls = "allow"
+needless_doctest_main = "allow"
+redundant_closure = "allow"
+manual_range_contains = "allow"
+needless_return = "allow"
+assign_op_pattern = "allow"
+ptr_arg = "allow"
+len_without_is_empty = "allow"
+approx_constant = "allow"
+unnecessary_wraps = "allow"
+non_snake_case = "allow"
+redundant_field_names = "allow"
+single_match = "allow"
+needless_late_init = "allow"
+vec_init_then_push = "allow"
+upper_case_acronyms = "allow"
+identity_op = "allow"
+bool_assert_comparison = "allow"
+needless_borrow = "allow"
+explicit_auto_deref = "allow"
+unused_unit = "allow"
+module_inception = "allow"
+mixed_case_hex_literals = "allow"
+too_many_lines = "allow"
+cognitive_complexity = "allow"
+match_single_binding = "allow"
+derive_partial_eq_without_eq = "allow"
+missing_const_for_fn = "allow"
+redundant_static_lifetimes = "allow"
+redundant_clone = "allow"
+enum_variant_names = "allow"
+blacklisted_name = "allow"
+disallowed_names = "allow"
+new_without_default = "allow"
+just_underscores_and_digits = "allow"
+many_single_char_names = "allow"
+zero_ptr = "allow"
+useless_format = "allow"
+unused_variables = "allow"
+dead_code = "allow"
+manual_checked_ops = "allow"
+unnecessary_sort_by = "allow"
+bool_comparison = "allow"
+redundant_pattern_matching = "allow"
+mut_key = "allow"
+from_over_into = "allow"
+needless_lifetimes = "allow"
+single_match_else = "allow"
+unnecessary_unwrap = "allow"
+collapsible_match = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+wildcard_imports = "allow"
+match_like_matches_macro = "allow"

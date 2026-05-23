@@ -43,7 +43,7 @@ mod tests {
 
     #[test]
     fn test_connection_state_transitions() {
-        let states = vec![
+        let states = [
             ConnectionState::Handshaking,
             ConnectionState::Established,
             ConnectionState::Closing,
@@ -77,7 +77,7 @@ mod tests {
 
     #[test]
     fn test_connection_metrics() {
-        let connections = vec![
+        let connections = [
             create_test_connection("1", ConnectionState::Established),
             create_test_connection("2", ConnectionState::Handshaking),
         ];
@@ -116,7 +116,7 @@ mod tests {
 
     #[test]
     fn test_connection_filtering() {
-        let connections = vec![
+        let connections = [
             create_test_connection("1", ConnectionState::Established),
             create_test_connection("2", ConnectionState::Handshaking),
             create_test_connection("3", ConnectionState::Closed),

@@ -10,6 +10,10 @@ fi
 
 echo "Work dir is now: $(pwd)"
 
+# Run tailwind build
+echo "Compiling Tailwind CSS..."
+npm run tailwind:build
+
 # Run dx build
 echo "Starting Dioxus build..."
 dx build --release --platform web --package edgeray-app

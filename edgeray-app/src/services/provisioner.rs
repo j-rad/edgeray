@@ -362,7 +362,6 @@ impl Provisioner {
     /// Probe raw TCP connection timing
     #[cfg(not(target_arch = "wasm32"))]
     async fn probe_tcp_connect(&self, node: &ServerConfig) -> Result<u32, DriverError> {
-        
         use tokio::net::TcpStream;
 
         let start = Instant::now();

@@ -8,7 +8,7 @@
 //! - **Failures** glow Red
 //! - **Active stage** pulses Cyan
 
-use crate::components::ui::{GlassCard, Icon, SectionHeader};
+use crate::components::ui::{GlassCard, Icon};
 use dioxus::prelude::*;
 use std::collections::VecDeque;
 

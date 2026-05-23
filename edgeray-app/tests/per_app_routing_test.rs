@@ -11,7 +11,7 @@ mod tests {
     #[test]
     #[ignore] // Requires running VPN
     fn test_whitelist_mode() {
-        let rules = vec![
+        let rules = [
             PerAppRule {
                 id: "1".to_string(),
                 package_id: "com.example.app1".to_string(),
@@ -43,7 +43,7 @@ mod tests {
     #[test]
     #[ignore] // Requires running VPN
     fn test_blacklist_mode() {
-        let rules = vec![PerAppRule {
+        let rules = [PerAppRule {
             id: "1".to_string(),
             package_id: "com.example.app1".to_string(),
             action: RuleAction::Exclude,

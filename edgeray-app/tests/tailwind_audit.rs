@@ -4,8 +4,8 @@ use std::path::Path;
 #[test]
 fn test_tailwind_color_usage() {
     let _app_dir = Path::new("src"); // Adjust path as needed relative to test execution
-    let _required_colors = vec!["slate-950", "cyan-glow", "bg-white/5", "backdrop-blur"];
-    let _forbidden_colors = vec!["bg-red-500", "bg-blue-500"]; // Example strictness
+    let _required_colors = ["slate-950", "cyan-glow", "bg-white/5", "backdrop-blur"];
+    let _forbidden_colors = ["bg-red-500", "bg-blue-500"]; // Example strictness
 
     // Scan all rs files
     // This is a simplified "grep" test

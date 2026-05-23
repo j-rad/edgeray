@@ -2,9 +2,7 @@
 //!
 //! Rule management interface for domain/IP routing with balancers.
 
-use crate::components::forms::{
-    Button, ButtonVariant, FormCard, Select, TextInput,
-};
+use crate::components::forms::{Button, ButtonVariant, FormCard, Select, TextInput};
 use crate::components::ui::Icon;
 use dioxus::prelude::*;
 

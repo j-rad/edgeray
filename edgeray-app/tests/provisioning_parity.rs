@@ -28,6 +28,7 @@ impl MockBackend {
             .insert((node_id.to_string(), carrier), result);
     }
 
+    #[allow(dead_code)]
     async fn probe_node_carrier(&self, node_id: &str, carrier: CarrierType) -> anyhow::Result<u32> {
         match self.probe_results.get(&(node_id.to_string(), carrier)) {
             Some(Ok(latency)) => Ok(*latency),

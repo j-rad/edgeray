@@ -21,12 +21,14 @@ use edgeray_app::ui::subscription_view::SubscriptionView;
 #[cfg(not(target_arch = "wasm32"))]
 fn main() {
     components::log_view::init_logging();
+    components::asset_integrity::verify_assets();
     dioxus::launch(App);
 }
 
 #[cfg(target_arch = "wasm32")]
 fn main() {
     components::log_view::init_logging();
+    components::asset_integrity::verify_assets();
     dioxus::launch(App);
 }
 
@@ -39,6 +41,7 @@ fn App() -> Element {
 
     let mut mesh_safety = use_signal(|| MeshSafety::Secure);
     let mut ui_mode = use_signal(|| UiMode::Simple); // Default to Simple Mode for better UX
+    let mut is_booting = use_signal(|| true);
 
     // Initializing Intelligent Networking Components
     use_hook(|| {
@@ -72,6 +75,7 @@ fn App() -> Element {
                 let _monitor = edgeray_app::networking::monitor::ConnectionMonitor::new();
                 log::info!("Connection Monitor online");
             }
+            is_booting.set(false);
         });
     });
 
@@ -139,7 +143,7 @@ fn App() -> Element {
                         _ => RoutingMode::BypassLan, // Default fallback
                     };
 
-                    let _config = TunnelConfig {
+                    let config = TunnelConfig {
                         file_descriptor: None,
                         active_server: server.clone(),
                         tun_name: "edgeray0".to_string(),
@@ -214,8 +218,8 @@ fn App() -> Element {
         {
             spawn(async move {
                 let mut interval = tokio::time::interval(std::time::Duration::from_secs(1));
-                let _last_upload = 0u64;
-                let _last_download = 0u64;
+                let mut last_upload = 0u64;
+                let mut last_download = 0u64;
 
                 loop {
                     interval.tick().await;
@@ -261,8 +265,14 @@ fn App() -> Element {
     };
 
     rsx! {
-        style { "{include_str!(\"../assets/styles.css\")}" }
-        if *show_add_modal.read() {
+        style { "{edgeray_app::components::asset_integrity::STYLES_CSS}" }
+        style { "{edgeray_app::components::asset_integrity::INTER_CSS}" }
+        style { "{edgeray_app::components::asset_integrity::JETBRAINS_MONO_CSS}" }
+        style { "{edgeray_app::components::asset_integrity::MATERIAL_SYMBOLS_CSS}" }
+        style { "{edgeray_app::components::asset_integrity::CUSTOM_THEME_CSS}" }
+        if *is_booting.read() {
+            edgeray_app::components::shimmer::GlassShimmerScreen {}
+        } else if *show_add_modal.read() {
             ServerAddModal {
                 on_close: move |_| show_add_modal.set(false),
                 on_save: move |configs: Vec<ServerConfig>| {

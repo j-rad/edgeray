@@ -5,6 +5,8 @@
 
 pub mod app_metadata;
 pub mod haptic_manager;
+pub mod firewall;
 
 pub use app_metadata::fetch_installed_apps;
 pub use haptic_manager::create_haptic_engine;
+pub use firewall::{enable_killswitch, disable_killswitch};

@@ -1,5 +1,5 @@
-use crate::networking::monitor::ConnectionMonitor;
 use crate::models::ServerConfig;
+use crate::networking::monitor::ConnectionMonitor;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::net::IpAddr;
@@ -86,10 +86,13 @@ impl IspAwareDialer {
     /// Detect current ISP using MaxMind DB (local) or IP-API (fallback)
     pub async fn detect_isp(&mut self) -> Result<IspInfo, String> {
         // 1. Get Public IP
-        let client = reqwest::Client::builder()
-            .timeout(std::time::Duration::from_secs(5))
-            .build()
-            .map_err(|e| e.to_string())?;
+        let mut builder = reqwest::Client::builder();
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            builder = builder.timeout(std::time::Duration::from_secs(5));
+        }
+
+        let client = builder.build().map_err(|e| e.to_string())?;
 
         let public_ip_str = client
             .get("https://api.ipify.org")
@@ -100,7 +103,9 @@ impl IspAwareDialer {
             .await
             .map_err(|_| "Failed to read public IP".to_string())?;
 
-        let public_ip: IpAddr = public_ip_str.parse().map_err(|_| "Invalid IP format".to_string())?;
+        let public_ip: IpAddr = public_ip_str
+            .parse()
+            .map_err(|_| "Invalid IP format".to_string())?;
 
         // 2. Try MaxMind DB Lookup
         if let Some(path) = &self.db_path {
@@ -114,27 +119,31 @@ impl IspAwareDialer {
                 }
 
                 if let Ok(asn_entry) = reader.lookup::<AsnEntry>(public_ip) {
-                     let org = asn_entry.autonomous_system_organization.unwrap_or("Unknown").to_string();
-                     let asn_num = asn_entry.autonomous_system_number.unwrap_or(0);
-                     let asn_str = format!("AS{}", asn_num);
+                    let org = asn_entry
+                        .autonomous_system_organization
+                        .unwrap_or("Unknown")
+                        .to_string();
+                    let asn_num = asn_entry.autonomous_system_number.unwrap_or(0);
+                    let asn_str = format!("AS{}", asn_num);
 
-                     let isp_code = self.resolve_isp_code(&asn_str, &org);
+                    let isp_code = self.resolve_isp_code(&asn_str, &org);
 
-                     let info = IspInfo {
-                         name: org,
-                         country_code: "XX".to_string(), // GeoLite2-ASN doesn't have country, would need Country DB.
-                         asn: asn_str,
-                         isp_code,
-                     };
+                    let info = IspInfo {
+                        name: org,
+                        country_code: "XX".to_string(), // GeoLite2-ASN doesn't have country, would need Country DB.
+                        asn: asn_str,
+                        isp_code,
+                    };
 
-                     self.current_isp = Some(info.clone());
-                     return Ok(info);
+                    self.current_isp = Some(info.clone());
+                    return Ok(info);
                 }
             }
         }
 
         // 3. Fallback to IP-API
-        let url = "http://ip-api.com/json/?fields=status,message,country,countryCode,isp,org,as,query";
+        let url =
+            "http://ip-api.com/json/?fields=status,message,country,countryCode,isp,org,as,query";
 
         let resp: IpApiResponse = client
             .get(url)
@@ -242,37 +251,47 @@ impl IspAwareDialer {
     }
 
     /// Rank nodes based on ISP match and Path Quality
-    pub fn rank_nodes(&self, servers: Vec<ServerConfig>, _monitor: &ConnectionMonitor) -> Vec<ServerConfig> {
-        let mut scored_servers: Vec<(ServerConfig, f64)> = servers.into_iter().map(|s| {
-            let mut score = 0.0;
+    pub fn rank_nodes(
+        &self,
+        servers: Vec<ServerConfig>,
+        _monitor: &ConnectionMonitor,
+    ) -> Vec<ServerConfig> {
+        let mut scored_servers: Vec<(ServerConfig, f64)> = servers
+            .into_iter()
+            .map(|s| {
+                let mut score = 0.0;
 
-            // 1. ISP Affinity
-            if let Some(current_isp) = &self.current_isp {
-                if let Some(preferred) = self.best_paths.get(&current_isp.isp_code) {
-                    // Check if server ID or remarks match preference
-                    if let Some(id) = &s.id {
-                         if preferred.contains(id) {
-                             score += 50.0;
-                         }
-                    }
-                    if preferred.iter().any(|tag| s.remarks.to_lowercase().contains(tag)) {
-                        score += 30.0;
+                // 1. ISP Affinity
+                if let Some(current_isp) = &self.current_isp {
+                    if let Some(preferred) = self.best_paths.get(&current_isp.isp_code) {
+                        // Check if server ID or remarks match preference
+                        if let Some(id) = &s.id {
+                            if preferred.contains(id) {
+                                score += 50.0;
+                            }
+                        }
+                        if preferred
+                            .iter()
+                            .any(|tag| s.remarks.to_lowercase().contains(tag))
+                        {
+                            score += 30.0;
+                        }
                     }
                 }
-            }
 
-            // 2. Path Quality (if available)
-            // We assume monitor has stats accessible via some ID or address
-            // For now, we simulate stats lookup.
-            // In real impl, monitor.get_stats(s.id)
+                // 2. Path Quality (if available)
+                // We assume monitor has stats accessible via some ID or address
+                // For now, we simulate stats lookup.
+                // In real impl, monitor.get_stats(s.id)
 
-            // let stats = monitor.get_stats_for(&s.id);
-            // score -= stats.latency * 0.1;
-            // score -= stats.jitter * 0.5;
-            // score -= stats.loss * 10.0;
+                // let stats = monitor.get_stats_for(&s.id);
+                // score -= stats.latency * 0.1;
+                // score -= stats.jitter * 0.5;
+                // score -= stats.loss * 10.0;
 
-            (s, score)
-        }).collect();
+                (s, score)
+            })
+            .collect();
 
         // Sort descending by score
         scored_servers.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
@@ -285,7 +304,7 @@ impl IspAwareDialer {
         &self,
         monitor: &ConnectionMonitor,
         current_server: &ServerConfig,
-        available_servers: Vec<ServerConfig>
+        available_servers: Vec<ServerConfig>,
     ) -> Option<ServerConfig> {
         if self.check_failover(monitor) {
             // Find best alternative

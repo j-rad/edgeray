@@ -1,9 +1,9 @@
-//! Interactive Mesh Topology UI Component
 //!
 //! Visualizes the mesh network graph using Dioxus with high-performance CSS transforms.
 //! Displays nodes, links, and real-time RTT metrics fetched via the BackendDriver.
 //! Allows selecting an "Exit Node" for routing with one tap.
 
+#[allow(unused_imports)]
 use crate::components::ui::Icon;
 use dioxus::prelude::*;
 use std::collections::HashMap;
@@ -315,6 +315,24 @@ pub fn MeshTopology(
                         let node_for_select = node_id.clone();
                         let node_for_details = node_id.clone();
 
+                        let node_class = if is_exit {
+                            "bg-gradient-to-br from-green-500 to-emerald-600 border-green-400 text-white scale-110"
+                        } else if node.is_connected {
+                            "bg-gradient-to-br from-blue-600 to-indigo-700 border-blue-500/50 text-blue-100 hover:scale-105 hover:border-blue-400"
+                        } else {
+                            "bg-gray-700 border-gray-600 text-gray-400"
+                        };
+
+                        let status_dot_class = if node.is_connected { "bg-green-500" } else { "bg-gray-500" };
+                        let label_class = if is_exit { "text-green-400" } else if node.is_connected { "text-gray-300" } else { "text-gray-500" };
+
+                        let rtt_class = match LinkQuality::from_rtt(node.rtt) {
+                            LinkQuality::Excellent => "bg-green-900/80 text-green-300 border-green-700",
+                            LinkQuality::Good => "bg-lime-900/80 text-lime-300 border-lime-700",
+                            LinkQuality::Fair => "bg-yellow-900/80 text-yellow-300 border-yellow-700",
+                            _ => "bg-red-900/80 text-red-300 border-red-700",
+                        };
+
                         rsx! {
                             div {
                                 key: "{node_id}",
@@ -336,14 +354,7 @@ pub fn MeshTopology(
 
                                     // Main node circle
                                     div {
-                                        class: "relative w-12 h-12 rounded-full flex items-center justify-center border-2 shadow-lg transition-all duration-200",
-                                        class: if is_exit {
-                                            "bg-gradient-to-br from-green-500 to-emerald-600 border-green-400 text-white scale-110"
-                                        } else if node.is_connected {
-                                            "bg-gradient-to-br from-blue-600 to-indigo-700 border-blue-500/50 text-blue-100 hover:scale-105 hover:border-blue-400"
-                                        } else {
-                                            "bg-gray-700 border-gray-600 text-gray-400"
-                                        },
+                                        class: "relative w-12 h-12 rounded-full flex items-center justify-center border-2 shadow-lg transition-all duration-200 {node_class}",
 
                                         // Node icon/initial
                                         span {
@@ -353,8 +364,7 @@ pub fn MeshTopology(
 
                                         // Connection status dot
                                         div {
-                                            class: "absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-gray-900",
-                                            class: if node.is_connected { "bg-green-500" } else { "bg-gray-500" },
+                                            class: "absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-gray-900 {status_dot_class}",
                                         }
                                     }
 
@@ -391,21 +401,14 @@ pub fn MeshTopology(
 
                                 // Node label
                                 div {
-                                    class: "absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-xs font-medium whitespace-nowrap",
-                                    class: if is_exit { "text-green-400" } else if node.is_connected { "text-gray-300" } else { "text-gray-500" },
+                                    class: "absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-xs font-medium whitespace-nowrap {label_class}",
                                     "{node.label}"
                                 }
 
                                 // RTT Badge
                                 if let Some(rtt) = node.rtt {
                                     div {
-                                        class: "absolute -top-2 -right-3 px-1.5 py-0.5 text-[10px] font-medium rounded-full border",
-                                        class: match LinkQuality::from_rtt(Some(rtt)) {
-                                            LinkQuality::Excellent => "bg-green-900/80 text-green-300 border-green-700",
-                                            LinkQuality::Good => "bg-lime-900/80 text-lime-300 border-lime-700",
-                                            LinkQuality::Fair => "bg-yellow-900/80 text-yellow-300 border-yellow-700",
-                                            _ => "bg-red-900/80 text-red-300 border-red-700",
-                                        },
+                                        class: "absolute -top-2 -right-3 px-1.5 py-0.5 text-[10px] font-medium rounded-full border {rtt_class}",
                                         "{rtt}ms"
                                     }
                                 }
@@ -492,6 +495,11 @@ pub fn MeshNodeCard(
     on_details: EventHandler<String>,
 ) -> Element {
     let quality = LinkQuality::from_rtt(node.rtt);
+    let status_class = if node.is_connected {
+        "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"
+    } else {
+        "bg-gray-500"
+    };
 
     rsx! {
         div {
@@ -522,12 +530,7 @@ pub fn MeshNodeCard(
 
                     // Status indicator
                     div {
-                        class: "w-3 h-3 rounded-full",
-                        class: if node.is_connected {
-                            "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"
-                        } else {
-                            "bg-gray-500"
-                        },
+                        class: "w-3 h-3 rounded-full {status_class}",
                     }
 
                     div {

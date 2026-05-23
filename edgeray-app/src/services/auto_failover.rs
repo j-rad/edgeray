@@ -74,6 +74,19 @@ impl FailoverEngine {
         let provisioner = self.provisioner.clone();
         let config = self.config.clone();
 
+        #[cfg(target_arch = "wasm32")]
+        wasm_bindgen_futures::spawn_local(async move {
+            loop {
+                for node in &nodes {
+                    if let Err(e) = Self::check_node(&node, &provisioner, &tracker, &config).await {
+                        error!("Error monitoring node {}: {}", node.remarks, e);
+                    }
+                }
+                tokio::time::sleep(config.check_interval).await;
+            }
+        });
+
+        #[cfg(not(target_arch = "wasm32"))]
         tokio::spawn(async move {
             loop {
                 for node in &nodes {

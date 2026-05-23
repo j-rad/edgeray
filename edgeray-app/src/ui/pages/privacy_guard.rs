@@ -514,6 +514,15 @@ async fn save_per_app_rules_to_db(
     Ok(())
 }
 
+#[cfg(target_arch = "wasm32")]
+async fn save_per_app_rules_to_db(
+    _mode: PerAppMode,
+    _packages: Vec<String>,
+    _apps: Vec<AppMetadata>,
+) -> Result<(), String> {
+    Ok(())
+}
+
 // Platform-specific app fetching
 #[cfg(target_os = "android")]
 async fn fetch_installed_apps_with_metadata(

@@ -21,15 +21,25 @@ pub fn FlowJPro(props: FlowJProProps) -> Element {
 
     // Mock Telemetry Data for 64 ports
     // In production, this would come from a real-time signal
-    let port_status = (0..64).map(|i| {
-        if i < *port_count.read() {
-            if i % 7 == 0 { 2 } // Red
-            else if i % 3 == 0 { 1 } // Yellow
-            else { 0 } // Green
-        } else {
-            3 // Inactive (Gray)
-        }
-    }).collect::<Vec<u8>>();
+    let port_status = (0..64)
+        .map(|i| {
+            if i < *port_count.read() {
+                if i % 7 == 0 {
+                    2
+                }
+                // Red
+                else if i % 3 == 0 {
+                    1
+                }
+                // Yellow
+                else {
+                    0
+                } // Green
+            } else {
+                3 // Inactive (Gray)
+            }
+        })
+        .collect::<Vec<u8>>();
 
     rsx! {
         div {

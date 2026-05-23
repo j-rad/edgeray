@@ -3,12 +3,15 @@
 //! Glass-style UI components for the EdgeRay client.
 //! Ported from the v2ray-glass React/Tailwind design.
 
+pub mod asset_integrity;
 pub mod asset_manager_view;
+
 pub mod bottom_nav;
 pub mod connect_button;
 pub mod dashboard;
 pub mod forms;
 pub mod gestures;
+pub mod icons;
 pub mod import_view;
 pub mod log_view;
 pub mod mesh_dashboard;
@@ -25,6 +28,7 @@ pub mod server_list;
 pub mod settings_screen;
 
 pub mod glass_card;
+pub mod qr;
 pub mod qr_scanner;
 pub mod qr_share;
 pub mod reconnect_overlay;
@@ -36,6 +40,7 @@ pub mod subscription_view;
 pub mod telemetry_panel;
 pub mod theme;
 pub mod ui;
+pub mod ui_engine;
 
 // Re-export commonly used types
 pub use asset_manager_view::AssetManagerView;

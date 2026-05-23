@@ -111,7 +111,7 @@ mod tests {
 
     fn get_connection_count() -> usize {
         let output = Command::new("netstat")
-            .args(&["-tn"])
+            .args(["-tn"])
             .output()
             .expect("Failed to run netstat");
 
@@ -123,7 +123,7 @@ mod tests {
 
     fn get_firewall_rule_count() -> usize {
         let output = Command::new("iptables")
-            .args(&["-L", "-n"])
+            .args(["-L", "-n"])
             .output()
             .expect("Failed to run iptables");
 
@@ -139,7 +139,7 @@ mod tests {
     }
 
     fn kill_vpn() {
-        let _ = Command::new("pkill").args(&["-TERM", "rustray"]).status();
+        let _ = Command::new("pkill").args(["-TERM", "rustray"]).status();
     }
 
     fn start_vpn() {
@@ -152,7 +152,7 @@ mod tests {
 
     fn test_connection(url: &str) -> Result<(), String> {
         let output = Command::new("curl")
-            .args(&[
+            .args([
                 "-s",
                 "-o",
                 "/dev/null",

@@ -19,3 +19,4 @@ pub mod services;
 pub mod subscription;
 pub mod ui;
 pub mod utils;
+pub mod views;

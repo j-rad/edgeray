@@ -17,13 +17,19 @@ async fn test_watchdog_state_and_concurrency() {
 
     // Simulate setting kill switch (e.g. user toggles it)
     watchdog.set_kill_switch(true);
-    assert!(watchdog.is_kill_switch_active(), "Kill switch should be active");
+    assert!(
+        watchdog.is_kill_switch_active(),
+        "Kill switch should be active"
+    );
 
     // Test concurrency limit (simulated battery check)
     // Since mock `is_on_battery` returns false by default (plugged in), expecting 20.
     let concurrency = watchdog.get_scanner_concurrency().await;
     // We allow 5 or 20 depending on environment/mock
-    assert!(concurrency == 20 || concurrency == 5, "Concurrency should be sensible (20 or 5)");
+    assert!(
+        concurrency == 20 || concurrency == 5,
+        "Concurrency should be sensible (20 or 5)"
+    );
 
     // Note: To verify "no packets leak", an integration test with network namespace would be required.
     // Here we verify the supervisor logic correctly sets the flag which the OS controller consumes.

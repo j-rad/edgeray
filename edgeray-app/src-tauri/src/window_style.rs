@@ -24,13 +24,13 @@ pub fn apply_window_effects<R: Runtime>(window: &WebviewWindow<R>) {
         log::debug!("Mica unavailable ({}), falling back to Acrylic", mica_err);
         // Acrylic with a dark-tinted RGBA overlay (18, 18, 18, 200)
         if let Err(acrylic_err) = apply_acrylic(window, Some((18, 18, 18, 200))) {
-             log::warn!(
+            log::warn!(
                 "Failed to apply any backdrop effect: Mica={}, Acrylic={}",
                 mica_err,
                 acrylic_err
             );
         } else {
-             log::info!("Applied Acrylic backdrop effect");
+            log::info!("Applied Acrylic backdrop effect");
         }
     } else {
         log::info!("Applied Mica backdrop effect");
@@ -55,10 +55,12 @@ pub fn apply_window_effects<R: Runtime>(window: &WebviewWindow<R>) {
     ) {
         // Fall back to HudWindow if the deeper material is unsupported
         log::debug!("UnderWindowBackground failed ({}), trying HudWindow", e);
-        if let Err(fallback_err) = apply_vibrancy(window, NSVisualEffectMaterial::HudWindow, None, None) {
-             log::warn!("Failed to apply vibrancy: {}", fallback_err);
+        if let Err(fallback_err) =
+            apply_vibrancy(window, NSVisualEffectMaterial::HudWindow, None, None)
+        {
+            log::warn!("Failed to apply vibrancy: {}", fallback_err);
         } else {
-             log::info!("Applied macOS HudWindow vibrancy");
+            log::info!("Applied macOS HudWindow vibrancy");
         }
     } else {
         log::info!("Applied macOS UnderWindowBackground vibrancy");

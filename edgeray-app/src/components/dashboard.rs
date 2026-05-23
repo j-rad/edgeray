@@ -16,6 +16,16 @@ pub enum ConnectionState {
     Connected,
 }
 
+impl ConnectionState {
+    pub fn label(&self) -> &'static str {
+        match self {
+            ConnectionState::Disconnected => "Initialize Core Engine",
+            ConnectionState::Connecting => "Establishing Neural Link...",
+            ConnectionState::Connected => "System Fully Operational",
+        }
+    }
+}
+
 #[derive(Props, Clone, PartialEq)]
 pub struct DashboardProps {
     pub active_server: Option<ServerConfig>,
@@ -82,12 +92,17 @@ pub fn Dashboard(props: DashboardProps) -> Element {
     let mut logs = use_signal(Vec::<String>::new);
     use_effect(move || {
         if props.ui_mode == UiMode::Pro {
-             spawn(async move {
+            spawn(async move {
                 let mut interval = tokio::time::interval(std::time::Duration::from_millis(1000));
                 loop {
                     interval.tick().await;
                     let entries = crate::components::log_view::get_log_entries();
-                    let last_logs = entries.iter().rev().take(5).map(|e| format!("{} [{:?}] {}", e.timestamp, e.level, e.message)).collect();
+                    let last_logs = entries
+                        .iter()
+                        .rev()
+                        .take(5)
+                        .map(|e| format!("{} [{:?}] {}", e.timestamp, e.level, e.message))
+                        .collect();
                     logs.set(last_logs);
                 }
             });
@@ -140,8 +155,6 @@ pub fn Dashboard(props: DashboardProps) -> Element {
                         on_scan: move |data| {
                             log::info!("Scanned QR: {}", data);
                             is_scanning.set(false);
-                            let script = format!("showDXToast('QR Scanned', 'Content: {}', 'success', 3000)", data);
-                            let _ = dioxus::document::eval(&script);
                         }
                     }
                 }
@@ -452,15 +465,13 @@ fn MetricTile(
     value: String,
     unit: String,
     icon: String,
-    #[props(default = Vec::new())]
-    history: Vec<f64>,
-    #[props(default = false)]
-    is_alert: bool
+    #[props(default = Vec::new())] history: Vec<f64>,
+    #[props(default = false)] is_alert: bool,
 ) -> Element {
     // Generate simple sparkline path
     let spark_path = if !history.is_empty() {
-        let max = history.iter().cloned().fold(0.0/0.0, f64::max).max(1.0);
-        let min = history.iter().cloned().fold(0.0/0.0, f64::min).min(0.0);
+        let max = history.iter().cloned().fold(0.0 / 0.0, f64::max).max(1.0);
+        let min = history.iter().cloned().fold(0.0 / 0.0, f64::min).min(0.0);
         let range = if max - min == 0.0 { 1.0 } else { max - min };
         let width = 50.0;
         let height = 15.0;
@@ -468,14 +479,22 @@ fn MetricTile(
 
         let mut d = format!("M0 {:.1}", height - ((history[0] - min) / range * height));
         for (i, val) in history.iter().skip(1).enumerate() {
-             d.push_str(&format!(" L{:.1} {:.1}", (i + 1) as f64 * step, height - ((val - min) / range * height)));
+            d.push_str(&format!(
+                " L{:.1} {:.1}",
+                (i + 1) as f64 * step,
+                height - ((val - min) / range * height)
+            ));
         }
         d
     } else {
         String::new()
     };
 
-    let val_color = if is_alert { "text-red-500" } else { "text-emerald-600 dark:text-emerald-400" };
+    let val_color = if is_alert {
+        "text-red-500"
+    } else {
+        "text-emerald-600 dark:text-emerald-400"
+    };
 
     rsx! {
         div {

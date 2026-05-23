@@ -1,6 +1,6 @@
 use crate::models::ServerConfig;
 use dioxus::prelude::*;
-use qrcodegen::{QrCode, QrCodeEcc};
+use crate::components::qr::Qr;
 
 #[derive(Props, Clone, PartialEq)]
 pub struct QrShareProps {
@@ -12,49 +12,25 @@ pub struct QrShareProps {
 pub fn QrShare(props: QrShareProps) -> Element {
     let uri = props.config.to_uri();
 
-    // Generate QR Code
-    // Use QrCodeEcc::Medium for balance between error correction and size
-    let qr_result = QrCode::encode_text(&uri, QrCodeEcc::Medium);
-
-    let svg_content = match qr_result {
-        Ok(qr) => {
-            let size = qr.size();
-            let mut path_data = String::new();
-
-            for y in 0..size {
-                for x in 0..size {
-                    if qr.get_module(x, y) {
-                        // M x y h 1 v 1 h -1 z draws a 1x1 square at (x,y)
-                        path_data.push_str(&format!("M{},{}h1v1h-1z", x, y));
-                    }
-                }
-            }
-
-            rsx! {
-                svg {
-                    view_box: "0 0 {size} {size}",
-                    class: "w-full h-full",
-                    shape_rendering: "crispEdges",
-                    path {
-                        d: "{path_data}",
-                        fill: "black" // QR code itself is black
-                    }
-                }
-            }
-        },
-        Err(_) => rsx! {
-            div { class: "text-red-500 text-sm", "Error generating QR Code" }
-        }
-    };
-
     let copy_uri = uri.clone();
     let mut copied = use_signal(|| false);
 
     let on_copy = move |_| {
         let uri_js = copy_uri.clone();
-        // Use eval to copy to clipboard
-        let script = format!("navigator.clipboard.writeText('{}')", uri_js.replace("'", "\\'"));
-        let _ = dioxus::document::eval(&script);
+
+        #[cfg(all(
+            not(target_arch = "wasm32"),
+            not(target_os = "android"),
+            not(target_os = "ios")
+        ))]
+        {
+            if let Ok(mut clipboard) = arboard::Clipboard::new() {
+                let _ = clipboard.set_text(uri_js.clone());
+            }
+        }
+
+        // JS fallbacks and wasm are removed to respect 0% JS mandate
+        
         copied.set(true);
 
         // Reset copy status after 2 seconds
@@ -84,7 +60,7 @@ pub fn QrShare(props: QrShareProps) -> Element {
                 // QR Display Container
                 div {
                     class: "bg-white p-4 rounded-2xl w-64 h-64 shadow-inner flex items-center justify-center",
-                    {svg_content}
+                    Qr { data: uri, class: "w-full h-full" }
                 }
 
                 // Actions

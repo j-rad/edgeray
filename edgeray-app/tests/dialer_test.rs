@@ -1,6 +1,6 @@
+use edgeray_app::models::{Protocol, ServerConfig};
 use edgeray_app::networking::dialer::{IspAwareDialer, IspCode, IspInfo};
 use edgeray_app::networking::monitor::ConnectionMonitor;
-use edgeray_app::models::{ServerConfig, Protocol};
 
 #[test]
 fn test_isp_switching_and_handoff() {
@@ -44,7 +44,10 @@ fn test_isp_switching_and_handoff() {
 
     // 3. Rank Nodes - Expect MCI first
     let ranked_mci = dialer.rank_nodes(servers.clone(), &monitor);
-    assert_eq!(ranked_mci[0].id, s1_mci.id, "MCI ISP should prefer MCI node");
+    assert_eq!(
+        ranked_mci[0].id, s1_mci.id,
+        "MCI ISP should prefer MCI node"
+    );
 
     // 4. Switch ISP to Irancell
     dialer.set_manual_isp(IspInfo {
@@ -56,7 +59,10 @@ fn test_isp_switching_and_handoff() {
 
     // 5. Rank Nodes - Expect Irancell first
     let ranked_irancell = dialer.rank_nodes(servers.clone(), &monitor);
-    assert_eq!(ranked_irancell[0].id, s2_irancell.id, "Irancell ISP should prefer Irancell node");
+    assert_eq!(
+        ranked_irancell[0].id, s2_irancell.id,
+        "Irancell ISP should prefer Irancell node"
+    );
 
     // 6. Test Failover logic
     let current_server = s2_irancell.clone();
@@ -68,9 +74,15 @@ fn test_isp_switching_and_handoff() {
     // Check failover trigger
     let recommendation = dialer.recommend_switch(&monitor, &current_server, servers.clone());
 
-    assert!(recommendation.is_some(), "Should recommend switch due to high jitter");
+    assert!(
+        recommendation.is_some(),
+        "Should recommend switch due to high jitter"
+    );
     let rec = recommendation.unwrap();
-    assert_ne!(rec.id, current_server.id, "Should not recommend current failing server");
+    assert_ne!(
+        rec.id, current_server.id,
+        "Should not recommend current failing server"
+    );
 
     // Since we are on Irancell ISP, and current server (Irancell) is failing,
     // it should pick next best (MCI or Generic depending on score).

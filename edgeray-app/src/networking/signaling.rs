@@ -127,22 +127,30 @@ impl SignalingService {
     pub async fn publish_mqtt(&self, payload: &str) -> Result<()> {
         info!("Publishing to MQTT topic {}: {}", self.mqtt_topic, payload);
 
-        let mut mqttoptions =
-            rumqttc::MqttOptions::new("edgeray-signaling", "broker.hivemq.com", 1883);
-        mqttoptions.set_keep_alive(std::time::Duration::from_secs(5));
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            let mut mqttoptions =
+                rumqttc::MqttOptions::new("edgeray-signaling", "broker.hivemq.com", 1883);
+            mqttoptions.set_keep_alive(std::time::Duration::from_secs(5));
 
-        let (client, mut _connection) = rumqttc::AsyncClient::new(mqttoptions, 10);
+            let (client, mut _connection) = rumqttc::AsyncClient::new(mqttoptions, 10);
 
-        // Push the payload to the configured topic
-        client
-            .publish(
-                self.mqtt_topic.clone(),
-                rumqttc::QoS::AtLeastOnce,
-                false,
-                payload.as_bytes(),
-            )
-            .await
-            .map_err(|e| anyhow!("Failed to publish to MQTT: {}", e))?;
+            // Push the payload to the configured topic
+            client
+                .publish(
+                    self.mqtt_topic.clone(),
+                    rumqttc::QoS::AtLeastOnce,
+                    false,
+                    payload.as_bytes(),
+                )
+                .await
+                .map_err(|e| anyhow!("Failed to publish to MQTT: {}", e))?;
+        }
+
+        #[cfg(target_arch = "wasm32")]
+        {
+            return Err(anyhow!("MQTT signaling not supported on WASM"));
+        }
 
         Ok(())
     }

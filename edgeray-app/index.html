@@ -4,7 +4,7 @@
 <head>
     <title>{app_title}</title>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
@@ -244,17 +244,41 @@
     <!-- Dioxus App Mount Point -->
     <div id="main"></div>
 
-    <script src="assets/js/lucide.js"></script>
-    <script src="assets/js/qrcode.js"></script>
+
     <script>
-        // Hide loading spinner when WASM is loaded
+        // Hide loading spinner exactly when WASM is loaded and Dioxus mounts the UI
         document.addEventListener('DOMContentLoaded', function () {
-            setTimeout(function () {
-                var loading = document.getElementById('loading');
-                if (loading) {
+            var loading = document.getElementById('loading');
+            var main = document.getElementById('main');
+            
+            if (loading && main) {
+                // If Dioxus somehow mounted before this script (rare), hide immediately
+                if (main.childNodes.length > 0) {
                     loading.classList.add('loaded');
+                    return;
                 }
-            }, 1000);
+
+                // Otherwise, wait for Dioxus to inject the UI
+                var observer = new MutationObserver(function(mutations) {
+                    for (var i = 0; i < mutations.length; i++) {
+                        if (mutations[i].addedNodes.length > 0) {
+                            loading.classList.add('loaded');
+                            observer.disconnect();
+                            break;
+                        }
+                    }
+                });
+                
+                observer.observe(main, { childList: true });
+                
+                // Fallback timeout in case of critical WASM failure
+                setTimeout(function() {
+                    if (!loading.classList.contains('loaded')) {
+                        console.warn('WASM load timeout - forcing spinner hide');
+                        loading.classList.add('loaded');
+                    }
+                }, 10000);
+            }
         });
     </script>
 </body>

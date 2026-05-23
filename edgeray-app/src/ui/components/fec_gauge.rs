@@ -19,8 +19,16 @@ pub fn FecGauge(props: FecGaugeProps) -> Element {
     // Map 0-50% overhead to -90 to +90 degrees for needle
     let rotation = (props.overhead_percent / 50.0 * 180.0 - 90.0).clamp(-90.0, 90.0);
 
-    let color_class = if props.active { "text-emerald-400" } else { "text-slate-500" };
-    let stroke_class = if props.active { "stroke-emerald-500" } else { "stroke-slate-700" };
+    let color_class = if props.active {
+        "text-emerald-400"
+    } else {
+        "text-slate-500"
+    };
+    let stroke_class = if props.active {
+        "stroke-emerald-500"
+    } else {
+        "stroke-slate-700"
+    };
 
     // Arc length for SVG dasharray (approximate for semi-circle)
     // r=40, circumference = 2*pi*40 = 251. Semi-circle = 126.

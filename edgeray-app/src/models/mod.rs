@@ -323,6 +323,7 @@ impl Default for AppSettings {
     fn default() -> Self {
         Self {
             theme: default_theme(),
+            ui_mode: default_ui_mode(),
             start_on_boot: false,
             allow_insecure: false,
             routing_mode: default_routing_mode_str(),
