@@ -14,7 +14,7 @@ version = "1.0.0"
 edition = "2024"
 authors = ["j-rad"]
 license = "MIT"
-repository = "https://github.com/faezbarghasa/edgeray-workspace"
+repository = "https://github.com/j-rad/edgeray-workspace"
 
 [workspace.dependencies]
 # Unified dependency management to prevent version mismatches

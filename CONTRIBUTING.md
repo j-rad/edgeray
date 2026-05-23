@@ -34,7 +34,7 @@ EdgeRay is a complex project spanning a high-performance Rust core, a desktop UI
 
 ### 1. Reporting Bugs 🐛
 
-If you find a bug, please use the [Bug Report Template](https://github.com/faezbarghasa/edgeray-workspace/issues/new?template=bug_report.md). Be sure to include:
+If you find a bug, please use the [Bug Report Template](https://github.com/j-rad/edgeray-workspace/issues/new?template=bug_report.md). Be sure to include:
 
 * Your OS and EdgeRay version.
 * Sample `config.json` (redact your keys!).
@@ -42,7 +42,7 @@ If you find a bug, please use the [Bug Report Template](https://github.com/faezb
 
 ### 2. Suggesting Enhancements ✨
 
-Have an idea for a new transport or a UI improvement? Open a [Feature Request](https://github.com/faezbarghasa/edgeray-workspace/issues/new?template=feature_request.md).
+Have an idea for a new transport or a UI improvement? Open a [Feature Request](https://github.com/j-rad/edgeray-workspace/issues/new?template=feature_request.md).
 
 ### 3. Writing Code 💻
 

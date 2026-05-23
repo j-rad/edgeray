@@ -100,5 +100,5 @@ We welcome contributions from everyone! Whether you're a developer, a security r
 
 EdgeRay is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
 
-**Author**: [j-rad](https://github.com/faezbarghasa/edgeray-workspace)
+**Author**: [j-rad](https://github.com/j-rad/edgeray-workspace)
 **EdgeRay Team** 2024-2026.
